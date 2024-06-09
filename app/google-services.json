@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "589264589684",
+    "project_id": "proptelligence-eb51a",
+    "storage_bucket": "proptelligence-eb51a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589264589684:android:866882b7152f42dffe1221",
+        "android_client_info": {
+          "package_name": "com.rey.proptelligence"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYeAPLeoibELwR_VuQ4nWIy0btK0YGy_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
