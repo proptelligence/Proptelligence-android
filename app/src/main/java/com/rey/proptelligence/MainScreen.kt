@@ -5,21 +5,25 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 @Composable
-fun MainScreen(modifier: Modifier){
+fun MainScreen() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "login"){
@@ -38,28 +42,32 @@ fun MainScreen(modifier: Modifier){
 val auth = FirebaseAuth.getInstance()
 var storedVerificationId = ""
 
-fun signInWithPhoneAuthCredential(context: Context, credential: PhoneAuthCredential, navController: NavController){
-    auth.signInWithCredential(credential)
-        .addOnCompleteListener(context as Activity) { task ->
-            if (task.isSuccessful) {
+suspend fun signInWithPhoneAuthCredential(context: Context, credential: PhoneAuthCredential, navController: NavController){
+    withContext(Dispatchers.IO) {
+        try {
+            val result = auth.signInWithCredential(credential).await()
+            withContext(Dispatchers.Main) {
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
                 navController.navigate("home")
-                val user = task.result?.user
-            } else {
-                if (task.exception is FirebaseAuthInvalidCredentialsException){
-                    Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show()
-                }
-
+                result.user
+            }
+        } catch (e: FirebaseAuthInvalidCredentialsException) {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show()
             }
         }
+    }
 }
 
+@OptIn(DelicateCoroutinesApi::class)
 fun onLoginClicked(context: Context, navController: NavController, phoneNumber: String, onCodeSend:() -> Unit){
     auth.setLanguageCode("en")
     val callback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(p0: PhoneAuthCredential) {
             Log.d("phoneBook", "Verification Completed")
-            signInWithPhoneAuthCredential(context, p0, navController)
+            GlobalScope.launch {
+                signInWithPhoneAuthCredential(context, p0, navController)
+            }
         }
 
         override fun onVerificationFailed(p0: FirebaseException) {
@@ -84,7 +92,10 @@ fun onLoginClicked(context: Context, navController: NavController, phoneNumber: 
     PhoneAuthProvider.verifyPhoneNumber(option)
 }
 
+@OptIn(DelicateCoroutinesApi::class)
 fun verifyPhoneNumberWithCode(context: Context, verificationId: String, code: String, navController: NavController){
     val p0 = PhoneAuthProvider.getCredential(verificationId, code)
-    signInWithPhoneAuthCredential(context, p0, navController)
+    GlobalScope.launch {
+        signInWithPhoneAuthCredential(context, p0, navController)
+    }
 }
