@@ -50,8 +50,8 @@ fun OtpScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Verifiacation",
-            fontSize = 10.sp,
+            text = "Verification",
+            fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             color = tColor
         )
