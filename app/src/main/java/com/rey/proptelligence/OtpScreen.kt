@@ -42,7 +42,10 @@ import androidx.navigation.compose.rememberNavController
 fun OtpScreen(navController: NavController) {
     val context = LocalContext.current
     var otp by remember { mutableStateOf("") }
-    val bgColor = Color(0xFFECFADC)
+    val bgColor = Color(0xFFF6F6F6)
+    val textColor = Color(0xFFF2796B)
+    val unfocusedColor = Color(0xFFF5C4BF)
+    val enterNumberColor = Color(0xFF545151)
     val tColor = Color(0xFF2B472B)
 
     Column(modifier = Modifier
@@ -57,9 +60,9 @@ fun OtpScreen(navController: NavController) {
             fontWeight = FontWeight.Bold,
             color = tColor
         )
-        Spacer(modifier = Modifier.size(10.dp))
-        Text(text = "You will get OTP via SMS", color = tColor)
         Spacer(modifier = Modifier.size(50.dp))
+        Text(text = "You will get OTP via SMS", color = tColor)
+        Spacer(modifier = Modifier.size(10.dp))
         BasicTextField(
             value = otp,
             onValueChange = {
