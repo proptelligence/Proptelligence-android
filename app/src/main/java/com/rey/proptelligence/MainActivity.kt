@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
 
                 ) {
-                    innerPadding -> MainScreen()
+                    innerPadding -> LoginLogic()
                 }
             }
         }
