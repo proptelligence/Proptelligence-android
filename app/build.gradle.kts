@@ -71,4 +71,5 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 }
