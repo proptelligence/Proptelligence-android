@@ -25,5 +25,8 @@ fun LoginLogic() {
         composable("profile"){
             ProfileScreen(navController = navController)
         }
+        composable("selectCity"){
+            SelectCityScreen(navController = navController)
+        }
     }
 }

@@ -46,10 +46,16 @@ fun HomeScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_proptelligence_cropped),
-                        contentDescription = "Proptelligence Logo",
-                        modifier = Modifier.size(100.dp)
+//                    Image(
+//                        painter = painterResource(id = R.drawable.ic_proptelligence_cropped),
+//                        contentDescription = "Proptelligence Logo",
+//                        modifier = Modifier.size(100.dp)
+//                    )
+                        Text(
+                        text = "Proptelligence",
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        modifier = Modifier.padding(0.dp)
                     )
                 },
                 navigationIcon = {
@@ -72,7 +78,7 @@ fun HomeScreen(navController: NavController) {
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = myColor),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(android.graphics.Color.parseColor("#436b8f"))),
             )
         }
 

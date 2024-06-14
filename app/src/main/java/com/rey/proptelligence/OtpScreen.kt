@@ -73,13 +73,13 @@ fun OtpScreen(navController: NavController) {
                 text = "OTP",
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold,
-                color = textColor
+                color = Color(android.graphics.Color.parseColor("#32357A"))
             )
             Text(
                 text = "Verification",
                 fontSize = 40.sp,
                 fontWeight = FontWeight.Bold,
-                color = textColor
+                color = Color(android.graphics.Color.parseColor("#32357A"))
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(text = "Enter the code from the sms we sent to", color = Color.Black, fontSize = 15.sp)
@@ -149,7 +149,7 @@ fun OtpScreen(navController: NavController) {
                     verifyPhoneNumberWithCode(context, storedVerificationId, otp, navController)
                 },
                 colors = ButtonDefaults.buttonColors(
-                    if (otp.length >= 6) textColor else unfocusedColor)
+                    if (otp.length >= 6) Color(android.graphics.Color.parseColor("#32357A")) else Color(android.graphics.Color.parseColor("#7E97AB")))
             ) {
                 Text(text = "Verify", color = Color.White)
             }

@@ -44,7 +44,7 @@ fun SplashScreen(navController: NavController){
         startAnimation = true
         delay(4000)
         navController.popBackStack()
-        navController.navigate("login")
+        navController.navigate("selectCity")
     }
 
 
@@ -55,7 +55,7 @@ fun SplashScreen(navController: NavController){
 fun Splash(alpha: Float){
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color.Blue)
+        .background(Color(android.graphics.Color.parseColor("#32357A")))
     ) {
         Text(
             text = "PROPTELLIGENCE",

@@ -108,7 +108,7 @@ fun LoginScreen(navController: NavController) {
             Spacer(modifier = Modifier.size(30.dp))
             Text(
                 text = "Enter your mobile number",
-                color = textColor,
+                color = Color(android.graphics.Color.parseColor("#32357A")),
                 fontWeight = FontWeight.Bold,
                 fontSize = 17.sp
             )
@@ -122,7 +122,7 @@ fun LoginScreen(navController: NavController) {
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = textColor,
+                    focusedIndicatorColor = Color(android.graphics.Color.parseColor("#32357A")),
                     cursorColor = Color.Black
                 ),
                 modifier = Modifier
@@ -147,7 +147,7 @@ fun LoginScreen(navController: NavController) {
                     }
                 },
                 colors = ButtonDefaults.buttonColors(
-                    if (phoneNum.length == 10) textColor else unfocusedColor
+                    if (phoneNum.length == 10) Color(android.graphics.Color.parseColor("#32357A")) else Color(android.graphics.Color.parseColor("#7E97AB"))
                 ),
                 shape = RectangleShape,
                 modifier = Modifier
