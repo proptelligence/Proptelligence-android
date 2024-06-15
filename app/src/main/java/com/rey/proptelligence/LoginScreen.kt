@@ -55,10 +55,8 @@ fun LoginScreen(navController: NavController) {
     val context = LocalContext.current
     var phoneNum by remember { mutableStateOf("") }
     val bgColor = Color(0xFFF6F6F6)
-    val textColor = Color(0xFFF2796B)
-    val unfocusedColor = Color(0xFFF5C4BF)
     val enterNumberColor = Color(0xFF545151)
-    val tColor = Color(0xFF2B472B)
+
 
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusRequester = remember { FocusRequester() }

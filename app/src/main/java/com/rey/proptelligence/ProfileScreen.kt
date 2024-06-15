@@ -1,6 +1,6 @@
 package com.rey.proptelligence
 
-import android.provider.ContactsContract.Profile
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,6 +16,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Constraints
+
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -48,13 +52,9 @@ fun ProfileScreen(navController: NavController) {
         ) {
             val (topImg, profile, title, back, pen) = createRefs()
 
-//            Image(painterResource(id = R.drawable.arc_3), null,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .constrainAs(topImg) {
-//                        bottom.linkTo(parent.bottom)
-//                    }
-//            )
+
+
+
             Image(painterResource(id = R.drawable.spongebob), null,
                 modifier = Modifier
                     .size(110.dp)
@@ -76,14 +76,15 @@ fun ProfileScreen(navController: NavController) {
                 }
             )
 
-//            Image(painterResource(id = R.drawable.back), null,
-//                modifier = Modifier
-//                    .constrainAs(back) {
-//                        top.linkTo(parent.top, margin = 24.dp)
-//                        start.linkTo(profile.start, margin = 24.dp)
-//                    }
-//                    .clickable { }
-//            )
+            IconButton(onClick = { navController.navigate("home") },
+                modifier = Modifier.constrainAs(back) {
+                    top.linkTo(parent.top, margin = 24.dp)
+                    start.linkTo(parent.start, margin = (-120).dp)
+                },
+
+            ) {
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.Black)
+            }
         }
         Text(text = "Shreyas Patil"
             , fontSize = 26.sp
