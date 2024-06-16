@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -102,25 +103,31 @@ fun ProfileScreen(navController: NavController) {
         )
         Row(modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 32.dp, end = 32.dp, top = 32.dp, bottom = 10.dp)
-            .height(55.dp),
+            .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White)
+            .clickable { navController.navigate("editProfile")},// Set the background color
+
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .padding(5.dp),
                 verticalArrangement = Arrangement.Center
                 ) {
-                Image(painterResource(id = R.drawable.btn_1), null,
+                Image(painterResource(id = R.drawable.write), null,
                     modifier = Modifier
                         .padding(end = 5.dp)
                         .clickable { }
+                        .size(45.dp)
                 )
             }
             Column(modifier = Modifier
                 .padding(start = 16.dp)
                 .weight(1f)
             ) {
-                Text(text = "Notification",
+                Text(text = "Edit Profile",
                     fontSize = 18.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.SemiBold
@@ -129,8 +136,8 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
-                        .clickable { navController.navigate("home")}
+                        .padding(end = 20.dp)
+
                 )
             }
         }
@@ -138,11 +145,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_2), null,
@@ -164,7 +173,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -173,11 +182,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_3), null,
@@ -199,7 +210,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -208,11 +219,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_4), null,
@@ -234,7 +247,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -243,11 +256,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_5), null,
@@ -269,7 +284,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -278,11 +293,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_6), null,
@@ -304,7 +321,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -313,11 +330,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_6), null,
@@ -339,7 +358,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -348,11 +367,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_6), null,
@@ -374,7 +395,7 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
@@ -383,11 +404,13 @@ fun ProfileScreen(navController: NavController) {
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
+            .height(55.dp)
+            .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+            .background(Color.White), // Set the background color
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier
-                .fillMaxHeight(),
+                .fillMaxHeight().padding(5.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painterResource(id = R.drawable.btn_6), null,
@@ -409,46 +432,13 @@ fun ProfileScreen(navController: NavController) {
             Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
                 Image(painterResource(id = R.drawable.arrow), null,
                     modifier = Modifier
-                        .padding(end = 5.dp)
+                        .padding(end = 20.dp)
                         .clickable { }
                 )
             }
         }
 
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
-            .height(55.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column(modifier = Modifier
-                .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center
-            ) {
-                Image(painterResource(id = R.drawable.btn_6), null,
-                    modifier = Modifier
-                        .padding(end = 5.dp)
-                        .clickable { }
-                )
-            }
-            Column(modifier = Modifier
-                .padding(start = 16.dp)
-                .weight(1f)
-            ) {
-                Text(text = "Notification",
-                    fontSize = 18.sp,
-                    color = Color.Black,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
-            Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
-                Image(painterResource(id = R.drawable.arrow), null,
-                    modifier = Modifier
-                        .padding(end = 5.dp)
-                        .clickable { }
-                )
-            }
-        }
+
 
 
     }
