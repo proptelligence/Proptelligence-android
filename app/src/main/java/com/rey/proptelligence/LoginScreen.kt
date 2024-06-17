@@ -3,6 +3,8 @@ package com.rey.proptelligence
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -147,7 +149,7 @@ fun LoginScreen(navController: NavController) {
                 colors = ButtonDefaults.buttonColors(
                     if (phoneNum.length == 10) Color(android.graphics.Color.parseColor("#32357A")) else Color(android.graphics.Color.parseColor("#7E97AB"))
                 ),
-                shape = RectangleShape,
+                shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .height(45.dp)
                     .width(350.dp)
@@ -160,22 +162,36 @@ fun LoginScreen(navController: NavController) {
             }
 
             Spacer(modifier = Modifier.height(40.dp))
-            Text(text = "------------------ Or Login with ------------------",
+            Text(text = " Or Login with ",
                 color = Color.Black,
                 fontSize = 12.sp
-                )
+            )
+
+
             Spacer(modifier = Modifier.height(30.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_google_icon),
-                    contentDescription = "Google Icon",
-                    tint = Color.Black,
+            Row(
+                //modifier = Modifier.padding(16.dp), // Adjust the padding as needed
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_google), // Use your Google image file
+                    contentDescription = "Google Sign In",
                     modifier = Modifier
-                        .padding(end = 8.dp)
-                        .size(24.dp)
+                        .size(40.dp) // Set the size of the image
+                        .clickable { /* Handle Google sign in here */ }
                 )
-                Text(text = "Google", color = Color.Black)
+
+                Spacer(modifier = Modifier.width(40.dp))
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_facebook), // Use your Facebook image file
+                    contentDescription = "Facebook Sign In",
+                    modifier = Modifier
+                        .size(40.dp) // Set the size of the image
+                        .clickable { /* Handle Facebook sign in here */ }
+                )
             }
+
 
         }
     }

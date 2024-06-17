@@ -172,8 +172,8 @@ fun EditProfileScreen(navController: NavController) {
         },
             modifier = Modifier
                 .width(290.dp)
-                .clip(RoundedCornerShape(17.dp)),
-            shape = RectangleShape,
+                .clip(RoundedCornerShape(13.dp)),
+            shape = RoundedCornerShape(13.dp),
             colors = ButtonDefaults.buttonColors( Color(android.graphics.Color.parseColor("#32357A")))
         ) {
             Icon(
