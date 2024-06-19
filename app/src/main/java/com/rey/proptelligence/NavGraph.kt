@@ -9,7 +9,7 @@ import androidx.navigation.compose.rememberNavController
 fun LoginLogic() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = "home"){
         composable("splash"){
             SplashScreen(navController = navController)
         }
