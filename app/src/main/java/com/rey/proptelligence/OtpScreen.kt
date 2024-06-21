@@ -138,7 +138,7 @@ fun OtpScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.size(30.dp))
             Button(
-                shape = RectangleShape,
+                shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .height(45.dp)
                     .width(350.dp)
