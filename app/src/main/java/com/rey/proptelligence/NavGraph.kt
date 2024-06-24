@@ -38,7 +38,7 @@ fun LoginLogic() {
             ServicesScreen(navController = navController)
         }
         composable("propertyServices"){
-            ServicesScreen(navController = navController)
+            PropertyServicesScreen(navController = navController)
         }
     }
 }

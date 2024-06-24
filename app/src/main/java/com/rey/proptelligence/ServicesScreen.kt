@@ -73,7 +73,7 @@ fun ServicesScreen(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
-                        .clickable { /* Handle click for Property Services */ },
+                        .clickable { navController.navigate("propertyServices")},
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White),
                     shape = RoundedCornerShape(8.dp)
