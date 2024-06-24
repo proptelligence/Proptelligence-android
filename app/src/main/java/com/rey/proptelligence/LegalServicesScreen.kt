@@ -116,7 +116,7 @@ fun LegalServicesScreen(navController: NavController) {
                                 )
                             )
                             .clip(RoundedCornerShape(10.dp))
-                            .border(1.dp, Color.Black, shape = RoundedCornerShape(10.dp)),
+                            .border(0.dp, Color.Black, shape = RoundedCornerShape(10.dp)),
                             horizontalArrangement = Arrangement.Center,
                             verticalAlignment = Alignment.CenterVertically
                         ) {

@@ -1,6 +1,7 @@
 package com.rey.proptelligence
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -104,18 +105,21 @@ fun CustomDrawer(
             Column(modifier = Modifier
                 .padding(top = 0.dp)
                 .fillMaxHeight()
-                .width(300.dp)
+                .width(250.dp)
                 .background(Color.White)
             ) {
                 Spacer(modifier = Modifier.height(20.dp))
-                Text(text = "Proptelligence" , color = Color.Black, fontSize = 20.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(16.dp))
+                Text(text = "Proptelligence" , color = Color.Black, fontSize = 22.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(16.dp))
                 Spacer(modifier = Modifier.height(20.dp))
                 // Add your drawer items here
                 NavigationDrawerItem(
                     label = { Text("Home") },
                     icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home") },
                     selected = false,
-                    
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .border(0.5.dp, Color.Black, MaterialTheme.shapes.small),
+
                     onClick = {
                         navController.navigate("home")
                     },
@@ -128,11 +132,15 @@ fun CustomDrawer(
                         unselectedTextColor = Color.Black // Text color when unselected
                     )
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+
+                Spacer(modifier = Modifier.height(1.dp))
                 NavigationDrawerItem(
                     label = { Text("Services") },
                     icon = { Icon(imageVector = Icons.Default.Build, contentDescription = "Services") },
                     selected = false,
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .border(0.5.dp, Color.Black, MaterialTheme.shapes.small),
                     onClick = {
                         navController.navigate("services")
                     },
@@ -145,11 +153,14 @@ fun CustomDrawer(
                         unselectedTextColor = Color.Black // Text color when unselected
                     )
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(1.dp))
                 NavigationDrawerItem(
                     label = { Text("Products") },
                     icon = { Icon(painter = painterResource(id = R.drawable.product), contentDescription = "products") },
                     selected = false,
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .border(0.5.dp, Color.Black, MaterialTheme.shapes.small),
                     onClick = {
                         navController.navigate("products")
                     },
@@ -162,11 +173,14 @@ fun CustomDrawer(
                         unselectedTextColor = Color.Black // Text color when unselected
                     )
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(1.dp))
                 NavigationDrawerItem(
                     label = { Text("Company") },
                     icon = { Icon(painter = painterResource(id = R.drawable.company), contentDescription = "company") },
                     selected = false,
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .border(0.5.dp, Color.Black, MaterialTheme.shapes.small),
                     onClick = {
                         navController.navigate("company")
                     },

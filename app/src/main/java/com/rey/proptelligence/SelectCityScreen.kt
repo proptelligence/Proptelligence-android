@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,26 +61,36 @@ fun SelectCityScreen(navController: NavController) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     for (city in rowCities) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                        // Use Card composable here
+                        Card(
                             modifier = Modifier
-                                .padding(8.dp)
+                                .padding(20.dp)
                                 .aspectRatio(1f)
-                                .border(0.5.dp, Color.Black, CircleShape)
                                 .weight(1f)
-                                .clip(CircleShape)
-                                .background(Color.White)
-                                .clickable { navController.navigate("login") }
+                                .clickable { navController.navigate("login") },
+                            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.White), // Set background color
+                            shape = RoundedCornerShape(12.dp) // You can use RoundedCornerShape for rounded corners
                         ) {
-                            Image(
-                                painter = painterResource(city.imageId),
-                                contentDescription = city.name,
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
                                 modifier = Modifier
-                                    .size(130.dp)
-
-
-                            )
-                            Text(text = city.name, color = Color.Black)
+                                    .padding(0.dp) // Add padding inside the card
+                                    .fillMaxWidth()
+                            ) {
+                                Image(
+                                    painter = painterResource(city.imageId),
+                                    contentDescription = city.name,
+                                    modifier = Modifier
+                                        .size(100.dp) // Adjust image size as needed
+                                        .clip(CircleShape)
+                                )
+                                Text(
+                                    text = city.name,
+                                    color = Color.Black,
+                                    modifier = Modifier.padding(top = 8.dp)
+                                )
+                            }
                         }
                     }
                     if (rowCities.size < 2) {

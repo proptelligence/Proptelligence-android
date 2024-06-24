@@ -49,7 +49,7 @@ fun HomeScreen(navController: NavController) {
                 verticalArrangement = Arrangement.Top
             ) {
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize().padding(10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
