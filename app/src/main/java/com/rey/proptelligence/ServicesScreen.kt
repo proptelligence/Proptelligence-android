@@ -33,7 +33,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 
-data class Property(val imageId: Int, val name: String, val location: String, val price: String)
 
 
 @Composable

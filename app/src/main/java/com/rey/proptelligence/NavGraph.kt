@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun LoginLogic() {
     val navController = rememberNavController()
+    //val property = Property()
 
     NavHost(navController = navController, startDestination = "services"){
         composable("splash"){
@@ -40,5 +41,11 @@ fun LoginLogic() {
         composable("propertyServices"){
             PropertyServicesScreen(navController = navController)
         }
+        /*composable("delhi"){
+            DelhiProp(navController = navController, property = property)
+        }*/
+//        composable("products"){
+//            ProductsScreen(navController = navController)
+//        }
     }
 }
