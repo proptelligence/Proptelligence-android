@@ -10,7 +10,7 @@ fun LoginLogic() {
     val navController = rememberNavController()
     //val property = Property()
 
-    NavHost(navController = navController, startDestination = "services"){
+    NavHost(navController = navController, startDestination = "form"){
         composable("splash"){
             SplashScreen(navController = navController)
         }
@@ -44,8 +44,11 @@ fun LoginLogic() {
         /*composable("delhi"){
             DelhiProp(navController = navController, property = property)
         }*/
-//        composable("products"){
-//            ProductsScreen(navController = navController)
-//        }
+        composable("products"){
+            ProductsScreen(navController = navController)
+        }
+        composable("form"){
+            FormScreen(navController = navController)
+        }
     }
 }
