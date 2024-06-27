@@ -76,7 +76,7 @@ fun ProductsScreen(navController: NavController) {
                                 modifier = Modifier
                                     .padding(bottom = 8.dp)
 
-                                    .clickable { navController.navigate("propertyServices") },
+                                    .clickable { navController.navigate("form") },
                                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
                                 shape = RoundedCornerShape(8.dp)
@@ -102,7 +102,7 @@ fun ProductsScreen(navController: NavController) {
                                 modifier = Modifier
                                     .padding(bottom = 8.dp)
 
-                                    .clickable { navController.navigate("propertyServices") },
+                                    .clickable { navController.navigate("form") },
                                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
                                 shape = RoundedCornerShape(8.dp)
@@ -129,7 +129,7 @@ fun ProductsScreen(navController: NavController) {
                                 modifier = Modifier
                                     .padding(bottom = 8.dp)
 
-                                    .clickable { navController.navigate("propertyServices") },
+                                    .clickable { navController.navigate("form") },
                                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
                                 shape = RoundedCornerShape(8.dp)
@@ -155,7 +155,7 @@ fun ProductsScreen(navController: NavController) {
                             modifier = Modifier
                                 .padding(bottom = 8.dp)
 
-                                .clickable { navController.navigate("propertyServices") },
+                                .clickable { navController.navigate("form") },
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(8.dp)
@@ -180,7 +180,7 @@ fun ProductsScreen(navController: NavController) {
                             Card(
                                 modifier = Modifier
                                     .padding(bottom = 8.dp)
-                                    .clickable { navController.navigate("propertyServices") },
+                                    .clickable { navController.navigate("form") },
                                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
                                 shape = RoundedCornerShape(8.dp)
@@ -217,7 +217,7 @@ fun ProductsScreen(navController: NavController) {
                         Card(
                             modifier = Modifier
                                 .padding(bottom = 8.dp)
-                                .clickable { navController.navigate("propertyServices") },
+                                .clickable { navController.navigate("form") },
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(8.dp)
@@ -239,7 +239,7 @@ fun ProductsScreen(navController: NavController) {
                         Card(
                             modifier = Modifier
                                 .padding(bottom = 8.dp)
-                                .clickable { navController.navigate("propertyServices") },
+                                .clickable { navController.navigate("form") },
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(8.dp)
@@ -274,7 +274,7 @@ fun ProductsScreen(navController: NavController) {
                         Card(
                             modifier = Modifier
                                 .padding(bottom = 8.dp)
-                                .clickable { navController.navigate("propertyServices") },
+                                .clickable { navController.navigate("form") },
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(8.dp)
@@ -297,7 +297,7 @@ fun ProductsScreen(navController: NavController) {
                         Card(
                             modifier = Modifier
                                 .padding(bottom = 8.dp)
-                                .clickable { navController.navigate("propertyServices") },
+                                .clickable { navController.navigate("form") },
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(8.dp)
@@ -320,7 +320,7 @@ fun ProductsScreen(navController: NavController) {
                         Card(
                             modifier = Modifier
                                 .padding(bottom = 8.dp)
-                                .clickable { navController.navigate("propertyServices") },
+                                .clickable { navController.navigate("form") },
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             shape = RoundedCornerShape(8.dp)

@@ -10,7 +10,7 @@ fun LoginLogic() {
     val navController = rememberNavController()
     //val property = Property()
 
-    NavHost(navController = navController, startDestination = "form"){
+    NavHost(navController = navController, startDestination = "splash"){
         composable("splash"){
             SplashScreen(navController = navController)
         }
