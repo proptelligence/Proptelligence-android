@@ -4,13 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.rey.proptelligence.screens.HyderabadProp
 
 @Composable
 fun LoginLogic() {
     val navController = rememberNavController()
     //val property = Property()
 
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = "hyderabad"){
         composable("splash"){
             SplashScreen(navController = navController)
         }
@@ -44,6 +45,9 @@ fun LoginLogic() {
         /*composable("delhi"){
             DelhiProp(navController = navController, property = property)
         }*/
+        composable("hyderabad"){
+            HyderabadProp(navController = navController)
+        }
         composable("products"){
             ProductsScreen(navController = navController)
         }
