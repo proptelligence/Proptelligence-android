@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -134,7 +136,7 @@ fun PropertyItem(property: CitiesInfoItem) {
     Card(
         modifier = Modifier
             .padding(8.dp)
-            .fillMaxWidth()
+            .width(300.dp)
             .clip(RoundedCornerShape(8.dp))
             .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(8.dp)), // Make card fill width
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp), // Add elevation
@@ -143,7 +145,7 @@ fun PropertyItem(property: CitiesInfoItem) {
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp) // Add padding within the card
+                .padding(0.dp) // Add padding within the card
         ) {
 
             AsyncImage(
@@ -153,25 +155,35 @@ fun PropertyItem(property: CitiesInfoItem) {
                     .build(),
                 contentDescription = "Property Image",
                 modifier = Modifier
-                    .size(100.dp)
+
+                    .fillMaxSize()
                     .clip(RoundedCornerShape(8.dp))
                     .align(Alignment.CenterHorizontally),
                 contentScale = ContentScale.Crop
             )
 
-            Text(text = "${property.propertyName}", color = Color.Black, fontWeight = FontWeight.SemiBold)
-            Text(text = "${property.description}", color = Color.Black)
+            Column(
+                modifier = Modifier
+                    .padding(16.dp) // Add padding within the card
+            ) {
+
+                Text(text = property.propertyName, color = Color.Black, fontWeight = FontWeight.SemiBold)
+                Text(text = property.description, color = Color.Black)
 
 
-            Row {
-                Text(text = "Price: ", color = Color.Red, fontWeight = FontWeight.SemiBold)
-                Text(text = "${property.Price}", color = Color.Red)
+                Row {
+                    Text(text = "Price: ", color = Color.Red, fontWeight = FontWeight.SemiBold)
+                    Text(text = property.Price, color = Color.Red)
+                }
+
+                Row {
+                    Text(text = "Location: ", color = Color.Black, fontWeight = FontWeight.SemiBold)
+                    Text(text = property.Locality, color = Color.Black)
+                }
+
             }
 
-            Row {
-                Text(text = "Location: ", color = Color.Black, fontWeight = FontWeight.SemiBold)
-                Text(text = "${property.Locality}", color = Color.Black)
-            }
+
         }
     }
 }
