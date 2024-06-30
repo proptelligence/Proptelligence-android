@@ -42,14 +42,14 @@ fun PropertyServicesScreen(navController: NavController){
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
     val cities = listOf(
-        City("Delhi", R.drawable.delhi),
+        //City("Delhi", R.drawable.delhi),
         City("Mumbai", R.drawable.mumbai),
         City("Bangalore", R.drawable.bangalore),
         City("Hyderabad", R.drawable.hyderabad),
-        City("Ahmedabad", R.drawable.ahmedabad),
+        //City("Ahmedabad", R.drawable.ahmedabad),
         City("Chennai", R.drawable.chennai_changed),
         City("Kolkata", R.drawable.kolkata),
-        City("Pune", R.drawable.pune_changed),
+        //City("Pune", R.drawable.pune_changed),
         // Add more cities...
     )
 
