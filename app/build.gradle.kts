@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.rey.proptelligence"
+    namespace = "com.proptelligencenet.proptelligence"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.rey.proptelligence"
+        applicationId = "com.proptelligencenet.proptelligence"
         minSdk = 31
         targetSdk = 34
         versionCode = 1

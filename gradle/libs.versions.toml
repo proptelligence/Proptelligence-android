@@ -17,6 +17,7 @@ firebaseAuth = "23.0.0"
 lifecycleViewmodelCompose = "2.8.2"
 material3Android = "1.2.1"
 navigationCompose = "2.7.7"
+googleGmsGoogleServices = "4.4.2"
 
 [libraries]
 androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
@@ -47,4 +48,5 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converte
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

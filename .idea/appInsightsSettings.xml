@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.rey.proptelligence" />
-                  <option name="mobileSdkAppId" value="1:589264589684:android:866882b7152f42dffe1221" />
-                  <option name="projectId" value="proptelligence-eb51a" />
-                  <option name="projectNumber" value="589264589684" />
+                  <option name="appId" value="com.proptelligencenet.proptelligence" />
+                  <option name="mobileSdkAppId" value="1:467750504980:android:4f4e25b8bb56eb87ec3501" />
+                  <option name="projectId" value="proptelligence-app" />
+                  <option name="projectNumber" value="467750504980" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

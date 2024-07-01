@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "589264589684",
-    "project_id": "proptelligence-eb51a",
-    "storage_bucket": "proptelligence-eb51a.appspot.com"
+    "project_number": "467750504980",
+    "project_id": "proptelligence-app",
+    "storage_bucket": "proptelligence-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:589264589684:android:866882b7152f42dffe1221",
+        "mobilesdk_app_id": "1:467750504980:android:4f4e25b8bb56eb87ec3501",
         "android_client_info": {
-          "package_name": "com.rey.proptelligence"
+          "package_name": "com.proptelligencenet.proptelligence"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "467750504980-qdeebqi8viv51ck27vtj0fqu6df5qnqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proptelligencenet.proptelligence",
+            "certificate_hash": "fbbe46190ba928ec97b9bff2690e6c47d88ccb00"
+          }
+        },
+        {
+          "client_id": "467750504980-ul17jotdsk0gbcfju7213612d26iite3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYeAPLeoibELwR_VuQ4nWIy0btK0YGy_U"
+          "current_key": "AIzaSyAwQCH4Ix69sJUQZgMazKDmMPS_RDmivJg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467750504980-ul17jotdsk0gbcfju7213612d26iite3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
