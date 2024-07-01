@@ -1,15 +1,18 @@
 package com.proptelligencenet.proptelligence
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.SignIn.GoogleSignInLogic
 import com.proptelligencenet.proptelligence.screens.AhmedabadProp
 import com.proptelligencenet.proptelligence.screens.HyderabadProp
 
 @Composable
-fun LoginLogic() {
-    val navController = rememberNavController()
+fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignInLogic) {
+
     //val property = Property()
 
     NavHost(navController = navController, startDestination = "splash"){
@@ -17,7 +20,7 @@ fun LoginLogic() {
             SplashScreen(navController = navController)
         }
         composable("login"){
-            LoginScreen(navController = navController)
+            LoginScreen(navController = navController,googleSignInLogic = googleSignInLogic)
         }
         composable("otp"){
             OtpScreen(navController = navController)

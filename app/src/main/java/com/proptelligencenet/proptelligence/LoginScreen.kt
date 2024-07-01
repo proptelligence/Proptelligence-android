@@ -1,5 +1,6 @@
 package com.proptelligencenet.proptelligence
 
+import android.app.Activity
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -47,13 +48,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.SignIn.GoogleSignInLogic
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController, googleSignInLogic: GoogleSignInLogic) {
     val context = LocalContext.current
     var phoneNum by remember { mutableStateOf("") }
     val bgColor = Color(0xFFF6F6F6)
     val enterNumberColor = Color(0xFF545151)
+
+    val RC_SIGN_IN = 9001
+
+
+
 
 
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -174,7 +181,11 @@ fun LoginScreen(navController: NavController) {
                     contentDescription = "Google Sign In",
                     modifier = Modifier
                         .size(40.dp) // Set the size of the image
-                        .clickable { /* Handle Google sign in here */ }
+                        .clickable { /* Handle Google sign in here */
+                            googleSignInLogic.googleSignInClient.signOut()
+                            val signInIntent = googleSignInLogic.googleSignInClient.signInIntent
+                            (context as Activity).startActivityForResult(signInIntent, RC_SIGN_IN)
+                        }
                 )
 
                 Spacer(modifier = Modifier.width(40.dp))
@@ -191,9 +202,4 @@ fun LoginScreen(navController: NavController) {
 
         }
     }
-}
-@Preview(showBackground = true)
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen(rememberNavController())
 }
