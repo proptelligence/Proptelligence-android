@@ -15,7 +15,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
 
     //val property = Property()
 
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = "home"){
         composable("splash"){
             SplashScreen(navController = navController)
         }
@@ -73,6 +73,12 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
         }
         composable("form"){
             FormScreen(navController = navController)
+        }
+        composable("blogs"){
+            BlogsScreen(navController = navController)
+        }
+        composable("company"){
+            CompanyScreen(navController = navController)
         }
     }
 }
