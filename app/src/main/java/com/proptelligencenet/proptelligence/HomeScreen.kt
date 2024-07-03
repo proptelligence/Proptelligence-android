@@ -132,7 +132,7 @@ fun HomeScreen(navController: NavController) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Text(
                                     text = "Get Free Real Estate Guidance & Secure Legal Support",
-                                    fontSize = 30.sp,
+                                    fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color.Black
                                 )
@@ -520,14 +520,14 @@ private fun ContentView() {
 
 @Composable
 private fun BannerItemView(bannerItem: BannerItem) {
-    Box(
+    Card(
         modifier = Modifier
             .width(300.dp)
             .height(360.dp)
-            .background(Color.White)
             .clip(RoundedCornerShape(8.dp))
             .border(1.dp, Color.Black, shape = RoundedCornerShape(8.dp)),
-        contentAlignment = Alignment.Center
+        elevation = CardDefaults.cardElevation(8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

@@ -76,16 +76,16 @@ fun CustomTopAppBar(
                 )
             }
         },
-        actions = {
-            IconButton(onClick = { navController.navigate("profile") }) {
-                Icon(
-                    imageVector = Icons.Default.AccountCircle,
-                    contentDescription = "Profile Icon",
-                    modifier = Modifier.padding(0.dp),
-                    tint = Color.White
-                )
-            }
-        },
+//        actions = {
+//            IconButton(onClick = { navController.navigate("profile") }) {
+//                Icon(
+//                    imageVector = Icons.Default.AccountCircle,
+//                    contentDescription = "Profile Icon",
+//                    modifier = Modifier.padding(0.dp),
+//                    tint = Color.White
+//                )
+//            }
+//        },
         colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(android.graphics.Color.parseColor("#32357A"))),
     )
 }

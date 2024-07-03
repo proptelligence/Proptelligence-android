@@ -74,9 +74,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
         composable("form"){
             FormScreen(navController = navController)
         }
-        composable("blogs"){
-            BlogsScreen(navController = navController)
-        }
+
         composable("company"){
             CompanyScreen(navController = navController)
         }

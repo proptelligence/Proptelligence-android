@@ -32,7 +32,7 @@ class HyderabadViewModel : ViewModel() {
         viewModelScope.launch {
 
             try {
-                withTimeout(10000) { // Timeout duration in milliseconds
+                withTimeout(20000) { // Timeout duration in milliseconds
                     _hyderabadProperties.value = NetworkModule.getPropertyService().getHyderabadProperties()
                 }
                 _errorMessage.value = ""

@@ -32,7 +32,7 @@ class ChennaiViewModel: ViewModel(){
         viewModelScope.launch {
 
             try {
-                withTimeout(10000) { // Timeout duration in milliseconds
+                withTimeout(20000) { // Timeout duration in milliseconds
                     _chennaiProperties.value = NetworkModule.getPropertyService().getChennaiProperties()
                 }
                 _errorMessage.value = ""

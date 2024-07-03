@@ -29,7 +29,7 @@ class AhmedabadViewModel : ViewModel() {
     fun refreshData() {
         viewModelScope.launch {
             try {
-                withTimeout(10000) { // Timeout duration in milliseconds
+                withTimeout(20000) { // Timeout duration in milliseconds
                     _ahmedabadProperties.value = NetworkModule.getPropertyService().getAhmedabadProperties()
                 }
                 _errorMessage.value = ""

@@ -32,7 +32,7 @@ class KolkataViewModel: ViewModel() {
         viewModelScope.launch {
 
             try {
-                withTimeout(10000) { // Timeout duration in milliseconds
+                withTimeout(20000) { // Timeout duration in milliseconds
                     _kolkataProperties.value = NetworkModule.getPropertyService().getKolkataProperties()
                 }
                 _errorMessage.value = ""

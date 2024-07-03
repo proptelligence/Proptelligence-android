@@ -1,8 +1,11 @@
 package com.proptelligencenet.proptelligence
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +38,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +53,9 @@ import coil.request.ImageRequest
 fun LegalServicesScreen(navController: NavController) {
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
+    val context = LocalContext.current
+    val rememberedContext = remember { context }
 
     CustomDrawer(
         navController = navController,
@@ -69,40 +77,22 @@ fun LegalServicesScreen(navController: NavController) {
                     horizontalAlignment = Alignment.CenterHorizontally) {
 
                     item {
-                        Text(text = "Legal Services",
-                            modifier = Modifier
-                                .padding(top = 50.dp),
+                        Text(
+                            text = "Legal Services",
+                            modifier = Modifier.padding(top = 50.dp),
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
                         )
                         Spacer(modifier = Modifier.height(25.dp))
-                        Text(text = "Welcome to Proptelligence Legal Services, your trusted",
+                        Text(
+                            text = "Welcome to Proptelligence Legal Services, your trusted destination for comprehensive legal solutions. From intricate business contracts to personal legal matters, our team of seasoned attorneys is here to navigate the complex terrain of law on yourbehalf.",
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Normal,
-                            color = Color.Black
-                        )
-                        Text(text = "destination for comprehensive legal solutions. From",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Normal,
-                            color = Color.Black
-                        )
-
-                        Text(text = "intricate business contracts to personal legal matters,",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Normal,
-                            color = Color.Black
-                        )
-                        Text(text = "our team of seasoned attorneys is here to navigate the",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Normal,
-                            color = Color.Black
-                        )
-
-                        Text(text = "complex terrain of law on your behalf.",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Normal,
-                            color = Color.Black
+                            modifier = Modifier.padding(10.dp),
+                            color = Color.Black,
+                            //maxLines = 3, // Limit the text to a maximum of 3 lines
+                            overflow = TextOverflow.Clip // Add ellipsis (...) to indicate truncated text
                         )
                         Spacer(modifier = Modifier.height(25.dp))
                         Row(modifier = Modifier
@@ -338,6 +328,261 @@ fun LegalServicesScreen(navController: NavController) {
                                     Text(text = "at SRO", color = Color.Black)
                                 }
                             }
+                        }
+
+                        Spacer(modifier = Modifier.height(100.dp))
+
+                        Column(
+                            modifier = Modifier
+                                .background(color = Color(android.graphics.Color.parseColor("#32357A"))),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Column(modifier = Modifier
+                                .fillMaxSize()
+                                .padding(10.dp)
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Column(
+                                        verticalArrangement = Arrangement.Center,
+                                        horizontalAlignment = Alignment.Start,
+                                        modifier = Modifier.weight(1f)
+                                    ) {
+                                        Text(
+                                            text = "Company",
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.White
+                                        )
+
+                                        Spacer(modifier = Modifier.height(10.dp))
+                                        Text(
+                                            text = "Home",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier.clickable {
+                                                navController.navigate("home")
+                                            }
+                                        )
+                                        Spacer(modifier = Modifier.height(5.dp))
+                                        Text(
+                                            text = "About Us",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier.clickable {
+                                                navController.navigate("company")
+                                            }
+                                        )
+                                        Spacer(modifier = Modifier.height(5.dp))
+                                        Text(
+                                            text = "Services",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier.clickable {
+                                                navController.navigate("services")
+                                            }
+                                        )
+                                        Spacer(modifier = Modifier.height(5.dp))
+                                        Text(
+                                            text = "Solutions",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier.clickable {
+                                                navController.navigate("services")
+                                            }
+                                        )
+                                        Spacer(modifier = Modifier.height(5.dp))
+                                        Text(
+                                            text = "Contact Us",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier.clickable {
+                                                navController.navigate("company")
+                                            }
+                                        )
+                                    }
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        modifier = Modifier.weight(1f)
+                                    ) {
+
+                                        Text(
+                                            text = "Our Presence",
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.White
+                                        )
+                                        Spacer(modifier = Modifier.height(10.dp))
+                                        Text(
+                                            text = "We Work, Roshini Tech Hub, Anand Nagar, Aswath Nagar, Chinnapanna Halli, Bengaluru, Karnataka 560037",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White
+                                        )
+                                    }
+                                }
+
+
+
+                            }
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            Column(
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+                                Text(
+                                    text = "Follow Us",
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White
+                                )
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center,
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.ic_facebook), // Use your Facebook image file
+                                        contentDescription = "facebook icon",
+                                        modifier = Modifier
+                                            .size(40.dp) // Set the size of the image
+                                            .clickable {
+                                                val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                    data =
+                                                        Uri.parse("https://www.facebook.com/proptelligence")
+                                                }
+                                                rememberedContext.startActivity(intent)
+                                            }
+                                    )
+                                    Spacer(modifier = Modifier.width(5.dp))
+                                    Image(
+                                        painter = painterResource(id = R.drawable.ic_instagram), // Use your Facebook image file
+                                        contentDescription = "instagram icon",
+                                        modifier = Modifier
+                                            .size(40.dp) // Set the size of the image
+                                            .clickable {
+                                                val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                    data =
+                                                        Uri.parse("https://www.instagram.com/proptelligence")
+                                                }
+                                                rememberedContext.startActivity(intent)
+                                            }
+                                    )
+                                    Spacer(modifier = Modifier.width(5.dp))
+                                    Image(
+                                        painter = painterResource(id = R.drawable.ic_youtube),contentDescription = "youtube icon",
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                            .clickable {
+                                                val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                    data =
+                                                        Uri.parse("https://www.youtube.com/proptelligence/")
+                                                }
+                                                rememberedContext.startActivity(intent)
+                                            }
+                                    )
+                                    Spacer(modifier = Modifier.width(5.dp))
+                                    Image(
+                                        painter = painterResource(id = R.drawable.ic_linkedin), // Use your Facebook image file
+                                        contentDescription = "linkedin icon",
+                                        modifier = Modifier
+                                            .size(40.dp) // Set the size of the image
+                                            .clickable {
+                                                val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                    data =
+                                                        Uri.parse("https://www.linkedin.com/company/proptelligence/")
+                                                }
+                                                rememberedContext.startActivity(intent)
+                                            }
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(30.dp))
+
+                                Text(
+                                    text = "Legal",
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White
+                                )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.Center,
+                                ) {
+                                    Row(
+                                        horizontalArrangement = Arrangement.Center,
+                                        verticalAlignment = Alignment.CenterVertically,
+                                    ) {
+                                        Text(
+                                            text = "Privacy Policy",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier
+
+                                                .clickable {
+                                                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                        data =
+                                                            Uri.parse("https://www.proptelligence.net/privacypolicy")
+                                                    }
+                                                    rememberedContext.startActivity(intent)
+                                                }
+                                        )
+                                        Spacer(modifier = Modifier.width(15.dp))
+                                        Text(
+                                            text = "Terms & Conditions",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            modifier = Modifier
+                                                .clickable {
+                                                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                        data =
+                                                            Uri.parse("https://www.proptelligence.net/proptelligence-terms&conditions")
+                                                    }
+                                                    rememberedContext.startActivity(intent)
+                                                }
+                                        )
+                                    }
+
+                                    Spacer(modifier = Modifier.height(5.dp))
+                                    Text(
+                                        text = "Refund & Cancellation Policy",
+                                        fontSize = 15.sp,
+                                        fontWeight = FontWeight.Normal,
+                                        color = Color.White,
+                                        modifier = Modifier
+                                            .clickable {
+                                                val intent = Intent(Intent.ACTION_VIEW).apply {
+                                                    data =
+                                                        Uri.parse("https://www.proptelligence.net/proptelligence-refund-policy")
+                                                }
+                                                rememberedContext.startActivity(intent)
+                                            }
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(30.dp))
+
+
+                                Text(
+                                    text = "© 2024 Proptelligence. All rights reserved.",
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    color = Color.White
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(20.dp))
                         }
 
                     }
