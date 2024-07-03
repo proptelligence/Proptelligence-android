@@ -15,7 +15,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
 
     //val property = Property()
 
-    NavHost(navController = navController, startDestination = "home"){
+    NavHost(navController = navController, startDestination = "splash"){
         composable("splash"){
             SplashScreen(navController = navController)
         }

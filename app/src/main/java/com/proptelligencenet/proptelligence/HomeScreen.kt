@@ -81,11 +81,20 @@ fun HomeScreen(navController: NavController) {
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
                         )
-                        Image(
-                            painter = painterResource(id = R.drawable.home_screen),
-                            contentDescription = "City",
-                            modifier = Modifier.size(230.dp)
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830089/proptelligence/hzqxn8dm66bcoqplp4hh.png")
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = "Property Image",
+                            modifier = Modifier
+                                .size(230.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .align(Alignment.CenterHorizontally),
+                            contentScale = ContentScale.Crop
                         )
+                        Spacer(modifier = Modifier.height(10.dp))
                         Text(
                             text = "Experience effortless property management with",
                             fontSize = 15.sp,
@@ -462,7 +471,7 @@ fun HomeScreen(navController: NavController) {
 }
 
 data class BannerItem(
-    val imageResourceId: Int,
+    val imageResourceId: String,
     val text: String,
     val subtext: String
 )
@@ -471,11 +480,11 @@ data class BannerItem(
 @Composable
 private fun ContentView() {
     val list = listOf(
-        BannerItem(R.drawable.property_services, "Property Services", "At Proptelligence, we recognize the challenges faced by property owners and strive to provide innovative solutions tailored to their needs."),
-        BannerItem(R.drawable.legal_services, "Legal Services", "Navigating the legal complexities of real estate transactions can be daunting."),
-        BannerItem(R.drawable.advocates_consultation, "Advocates Consultation", "Expert legal guidance tailored to your needs. Advocating for your rights and providing strategic counsel"),
-        BannerItem(R.drawable.title_search, "Title Search OR Legal Opinion", "A Property Title Opinion is a legal document that offers an assessment regarding the legal standing of a specific real estate property."),
-        BannerItem(R.drawable.agreement_drafting, "Agreement Drafting", "Our team creates clear and concise agreements tailored to your specific requirements.")
+        BannerItem("https://res.cloudinary.com/duot2ognl/image/upload/v1719830096/proptelligence/yf0xrbvvlfie7ggnetym.png", "Property Services", "At Proptelligence, we recognize the challenges faced by property owners and strive to provide innovative solutions tailored to their needs."),
+        BannerItem("https://res.cloudinary.com/duot2ognl/image/upload/v1719830093/proptelligence/gc9vf2ovct9uffn7f6kl.png", "Legal Services", "Navigating the legal complexities of real estate transactions can be daunting."),
+        BannerItem("https://res.cloudinary.com/duot2ognl/image/upload/v1719830080/proptelligence/fbabrbvxhwdjmuhm9kw7.png", "Advocates Consultation", "Expert legal guidance tailored to your needs. Advocating for your rights and providing strategic counsel"),
+        BannerItem("https://res.cloudinary.com/duot2ognl/image/upload/v1719830085/proptelligence/sqgmbx7mjgxjsfecu1xl.png", "Title Search OR Legal Opinion", "A Property Title Opinion is a legal document that offers an assessment regarding the legal standing of a specific real estate property."),
+        BannerItem("https://res.cloudinary.com/duot2ognl/image/upload/v1719830090/proptelligence/p5s9gublftpiy5jtakut.png", "Agreement Drafting", "Our team creates clear and concise agreements tailored to your specific requirements.")
     )
 
     val pagerState = rememberPagerState(pageCount = { list.size })
@@ -524,10 +533,17 @@ private fun BannerItemView(bannerItem: BannerItem) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Image(
-                painter = painterResource(id = bannerItem.imageResourceId),
-                contentDescription = "Banner Image",
-                modifier = Modifier.size(200.dp)
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(bannerItem.imageResourceId)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = "Service Images",
+                modifier = Modifier
+                    .size(230.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .align(Alignment.CenterHorizontally),
+                contentScale = ContentScale.Crop
             )
             Text(
                 text = bannerItem.text,

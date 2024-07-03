@@ -21,7 +21,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-
-
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 
 @Composable
@@ -81,10 +84,17 @@ fun ServicesScreen(navController: NavController) {
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.property_services), // Replace with your image
-                            contentDescription = "Property Services",
-                            modifier = Modifier.size(150.dp)
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830096/proptelligence/yf0xrbvvlfie7ggnetym.png")
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = "Property Image",
+                            modifier = Modifier
+                                .size(150.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .align(Alignment.CenterHorizontally),
+                            contentScale = ContentScale.Crop
                         )
                         Spacer(modifier = Modifier.height(8.dp)) // Add space between image and text
                         Text(
@@ -113,10 +123,17 @@ fun ServicesScreen(navController: NavController) {
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.advocates_consultation    ), // Replace with your image
-                            contentDescription = "Legal Services",
-                            modifier = Modifier.size(150.dp)
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830080/proptelligence/fbabrbvxhwdjmuhm9kw7.png")
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = "Legal Services Image",
+                            modifier = Modifier
+                                .size(150.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .align(Alignment.CenterHorizontally),
+                            contentScale = ContentScale.Crop
                         )
                         Spacer(modifier = Modifier.height(8.dp)) // Add space between image and text
                         Text(

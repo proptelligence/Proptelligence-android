@@ -87,19 +87,19 @@ fun ProfileScreen(navController: NavController) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.Black)
             }
         }
-        Text(text = "Shreyas Patil"
-            , fontSize = 26.sp
-            , fontWeight = FontWeight.Bold
-            , color = Color(android.graphics.Color.parseColor("#32357A"))
-            , modifier = Modifier.padding(top = 16.dp)
+        Text(text = "Shreyas Patil",
+            fontSize = 26.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(android.graphics.Color.parseColor("#32357A")),
+            modifier = Modifier.padding(top = 16.dp)
         )
-        Text(text = "shreyassp002@gmail.com"
-            , fontSize = 18.sp
-            , color = Color(android.graphics.Color.parseColor("#747679"))
+        Text(text = "shreyassp002@gmail.com",
+            fontSize = 18.sp,
+            color = Color(android.graphics.Color.parseColor("#747679"))
         )
-        Text(text = "+91 1234567890"
-            , fontSize = 18.sp
-            , color = Color(android.graphics.Color.parseColor("#747679"))
+        Text(text = "+91 1234567890",
+            fontSize = 18.sp,
+            color = Color(android.graphics.Color.parseColor("#747679"))
         )
         Row(modifier = Modifier
             .fillMaxWidth()

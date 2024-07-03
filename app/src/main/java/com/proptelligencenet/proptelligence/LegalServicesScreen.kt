@@ -30,6 +30,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,6 +39,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -124,9 +128,17 @@ fun LegalServicesScreen(navController: NavController) {
                                 .padding(10.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center) {
-                                Image(painter = painterResource(id = R.drawable.advocates_consultation), contentDescription = "Advocates Consultation",
+                                AsyncImage(
+                                    model = ImageRequest.Builder(LocalContext.current)
+                                        .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830080/proptelligence/fbabrbvxhwdjmuhm9kw7.png")
+                                        .crossfade(true)
+                                        .build(),
+                                    contentDescription = "Advocates Consultation Image",
                                     modifier = Modifier
                                         .size(170.dp)
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .align(Alignment.CenterHorizontally),
+                                    contentScale = ContentScale.Crop
                                 )
                             }
                             Column(modifier = Modifier
@@ -199,7 +211,7 @@ fun LegalServicesScreen(navController: NavController) {
                                 modifier = Modifier
                                     .weight(1f)
                                     .padding(8.dp)
-                                ,
+                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
 
                                 onClick = {}
 
@@ -211,10 +223,17 @@ fun LegalServicesScreen(navController: NavController) {
                                         .clip(RoundedCornerShape(10.dp))
                                         .background(Color.White)
                                 ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.title_opinion),
-                                        contentDescription = "Image Description",
-                                        modifier = Modifier.fillMaxSize()
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830078/proptelligence/vairh2sgdnx0hh9gurrh.png")
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "Title Search OR Legal Opinion Image",
+                                        modifier = Modifier
+                                            .size(180.dp)
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .align(Alignment.CenterHorizontally),
+                                        contentScale = ContentScale.Crop
                                     )
                                     Text(text = "Title Search OR Legal", color = Color.Black)
                                     Text(text = "Opinion", color = Color.Black)
@@ -224,7 +243,8 @@ fun LegalServicesScreen(navController: NavController) {
                             Card(
                                 modifier = Modifier
                                     .weight(1f)
-                                    .padding(8.dp),
+                                    .padding(8.dp)
+                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
                                 onClick = {}
 
                             ) {
@@ -235,9 +255,17 @@ fun LegalServicesScreen(navController: NavController) {
                                         .clip(RoundedCornerShape(10.dp))
                                         .background(Color.White)
                                 ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.drafting_legal),
-                                        contentDescription = "Image Description"
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830095/proptelligence/dzxjzqfdnvkzoffwdxfo.png")
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "",
+                                        modifier = Modifier
+                                            .size(180.dp)
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .align(Alignment.CenterHorizontally),
+                                        contentScale = ContentScale.Crop
                                     )
                                     Text(text = "Drafting", color = Color.Black)
                                 }
@@ -251,7 +279,8 @@ fun LegalServicesScreen(navController: NavController) {
                             Card(
                                 modifier = Modifier
                                     .weight(1f)
-                                    .padding(8.dp),
+                                    .padding(8.dp)
+                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
                                 onClick = {}
 
                             ) {
@@ -262,9 +291,17 @@ fun LegalServicesScreen(navController: NavController) {
                                         .clip(RoundedCornerShape(10.dp))
                                         .background(Color.White)
                                 ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.affidavits_legal),
-                                        contentDescription = "Image Description"
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830095/proptelligence/gepp4kfetas9zr7ud1jg.png")
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "",
+                                        modifier = Modifier
+                                            .size(180.dp)
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .align(Alignment.CenterHorizontally),
+                                        contentScale = ContentScale.Crop
                                     )
                                     Text(text = "Affidavits", color = Color.Black)
                                 }
@@ -273,7 +310,8 @@ fun LegalServicesScreen(navController: NavController) {
                             Card(
                                 modifier = Modifier
                                     .weight(1f)
-                                    .padding(8.dp),
+                                    .padding(8.dp)
+                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
                                 onClick = {}
 
                             ) {
@@ -284,9 +322,17 @@ fun LegalServicesScreen(navController: NavController) {
                                         .clip(RoundedCornerShape(10.dp))
                                         .background(Color.White)
                                 ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.legal_services),
-                                        contentDescription = "Image Description"
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830093/proptelligence/gc9vf2ovct9uffn7f6kl.png")
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "",
+                                        modifier = Modifier
+                                            .size(180.dp)
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .align(Alignment.CenterHorizontally),
+                                        contentScale = ContentScale.Crop
                                     )
                                     Text(text = "Registration Support", color = Color.Black)
                                     Text(text = "at SRO", color = Color.Black)
