@@ -37,6 +37,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -48,6 +49,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.proptelligencenet.proptelligence.SignIn.GoogleSignInLogic
 
 @Composable
@@ -103,10 +106,17 @@ fun LoginScreen(navController: NavController, googleSignInLogic: GoogleSignInLog
             verticalArrangement = Arrangement.Top
         ) {
 
-            Image(
-                painter = painterResource(id = R.drawable.ic_proptelligence_logo),
-                contentDescription = "Proptelligence Logo",
-                modifier = Modifier.size(200.dp)
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data("https://res.cloudinary.com/duot2ognl/image/upload/v1720028066/proptelligence/q4ngimcfnpv3rerpc645.jpg")
+                    .crossfade(true)
+                    .build(),
+                contentDescription = "Service Images",
+                modifier = Modifier
+                    .size(220.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .align(Alignment.CenterHorizontally),
+                //contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.size(30.dp))
             Text(
@@ -172,32 +182,44 @@ fun LoginScreen(navController: NavController, googleSignInLogic: GoogleSignInLog
 
 
             Spacer(modifier = Modifier.height(30.dp))
-            Row(
-                //modifier = Modifier.padding(16.dp), // Adjust the padding as needed
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_google), // Use your Google image file
-                    contentDescription = "Google Sign In",
-                    modifier = Modifier
-                        .size(40.dp) // Set the size of the image
-                        .clickable { /* Handle Google sign in here */
-                            googleSignInLogic.googleSignInClient.signOut()
-                            val signInIntent = googleSignInLogic.googleSignInClient.signInIntent
-                            (context as Activity).startActivityForResult(signInIntent, RC_SIGN_IN)
-                        }
-                )
+//            Row(
+//                //modifier = Modifier.padding(16.dp), // Adjust the padding as needed
+//                horizontalArrangement = Arrangement.SpaceEvenly
+//            ) {
+//                Image(
+//                    painter = painterResource(id = R.drawable.ic_google), // Use your Google image file
+//                    contentDescription = "Google Sign In",
+//                    modifier = Modifier
+//                        .size(40.dp) // Set the size of the image
+//                        .clickable { /* Handle Google sign in here */
+//                            googleSignInLogic.googleSignInClient.signOut()
+//                            val signInIntent = googleSignInLogic.googleSignInClient.signInIntent
+//                            (context as Activity).startActivityForResult(signInIntent, RC_SIGN_IN)
+//                        }
+//                )
+//
+//                Spacer(modifier = Modifier.width(40.dp))
+//
+//                Image(
+//                    painter = painterResource(id = R.drawable.ic_facebook), // Use your Facebook image file
+//                    contentDescription = "Facebook Sign In",
+//                    modifier = Modifier
+//                        .size(40.dp) // Set the size of the image
+//                        .clickable { /* Handle Facebook sign in here */ }
+//                )
+//            }
 
-                Spacer(modifier = Modifier.width(40.dp))
-
-                Image(
-                    painter = painterResource(id = R.drawable.ic_facebook), // Use your Facebook image file
-                    contentDescription = "Facebook Sign In",
-                    modifier = Modifier
-                        .size(40.dp) // Set the size of the image
-                        .clickable { /* Handle Facebook sign in here */ }
-                )
-            }
+            Image(
+                painter = painterResource(id = R.drawable.ic_google), // Use your Google image file
+                contentDescription = "Google Sign In",
+                modifier = Modifier
+                    .size(40.dp) // Set the size of the image
+                    .clickable { /* Handle Google sign in here */
+                        googleSignInLogic.googleSignInClient.signOut()
+                        val signInIntent = googleSignInLogic.googleSignInClient.signInIntent
+                        (context as Activity).startActivityForResult(signInIntent, RC_SIGN_IN)
+                    }
+            )
 
 
         }
