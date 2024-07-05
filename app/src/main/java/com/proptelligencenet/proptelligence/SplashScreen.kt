@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
@@ -37,12 +38,29 @@ fun SplashScreen(navController: NavController) {
 
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay(4000)
-        navController.popBackStack()
-        navController.navigate("selectCity")
+        delay(3000)
+        // After the animation, check if a user is signed in
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            // User is signed in, navigate to the home screen
+            navController.navigate("home") {
+                // Pop up to the splash screen from the back stack
+                // and then remove it to prevent going back to the splash screen
+                popUpTo("splash") { inclusive = true }
+            }
+        } else {
+            // User is not signed in, navigate to the login screen
+            navController.navigate("selectCity") {
+                // Pop up to the splash screen from the back stack
+                // and then remove it to prevent going back to the splash screen
+                popUpTo("splash") { inclusive = true }
+            }
+        }
     }
 
     Splash(alpha = alphaAnim.value)
+
+
 }
 
 @Composable

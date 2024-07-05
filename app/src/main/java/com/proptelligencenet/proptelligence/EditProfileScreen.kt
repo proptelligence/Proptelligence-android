@@ -36,6 +36,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -48,11 +50,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun EditProfileScreen(navController: NavController) {
     val enterNumberColor = Color(0xFF545151)
     val keyboardController = LocalSoftwareKeyboardController.current
+
+    val auth = FirebaseAuth.getInstance()
+    val user = auth.currentUser
+
+    val photoUrl = user?.photoUrl
 
     Column(
         modifier = Modifier
@@ -82,14 +92,33 @@ fun EditProfileScreen(navController: NavController) {
             ,color = Color(android.graphics.Color.parseColor("#32357A")))
 
         Spacer(modifier = Modifier.height(30.dp))
+        if(photoUrl != null){
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(photoUrl)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(130.dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+        }else{
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data("https://res.cloudinary.com/duot2ognl/image/upload/v1720151146/proptelligence/jhu1xpifp5kjkoklzsua.png")
+                    .crossfade(true)
+                    .build(),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(130.dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+        }
 
-        Image(
-            painter = painterResource(id = R.drawable.spongebob),
-            contentDescription = "Profile Picture",
-            modifier = Modifier
-                .size(130.dp)
-                .clip(CircleShape)
-        )
+
 
         Text(
             text = "Change Picture?",
@@ -144,25 +173,25 @@ fun EditProfileScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        Column(horizontalAlignment = Alignment.Start) {
-            Text(text = "Password", fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color(android.graphics.Color.parseColor("#32357A")))
-            var password by remember { mutableStateOf(TextFieldValue("")) }
-            OutlinedTextField(
-                modifier = Modifier
-                    .height(55.dp)
-                    .width(290.dp),
-                singleLine = true,
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Enter Password", color = enterNumberColor) },
-                visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                textStyle = TextStyle(
-                    color = Color.Black
-                ),
-                shape = RoundedCornerShape(12.dp)
-            )
-        }
+//        Column(horizontalAlignment = Alignment.Start) {
+//            Text(text = "Password", fontSize = 18.sp, fontWeight = FontWeight.SemiBold, color = Color(android.graphics.Color.parseColor("#32357A")))
+//            var password by remember { mutableStateOf(TextFieldValue("")) }
+//            OutlinedTextField(
+//                modifier = Modifier
+//                    .height(55.dp)
+//                    .width(290.dp),
+//                singleLine = true,
+//                value = password,
+//                onValueChange = { password = it },
+//                label = { Text("Enter Password", color = enterNumberColor) },
+//                visualTransformation = PasswordVisualTransformation(),
+//                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+//                textStyle = TextStyle(
+//                    color = Color.Black
+//                ),
+//                shape = RoundedCornerShape(12.dp)
+//            )
+//        }
 
         Spacer(modifier = Modifier.height(40.dp))
 

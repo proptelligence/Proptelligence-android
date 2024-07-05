@@ -10,10 +10,10 @@ android {
 
     defaultConfig {
         applicationId = "com.proptelligencenet.proptelligence"
-        minSdk = 31
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -83,6 +83,8 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation (libs.facebook.login)
+
+
 
 
 

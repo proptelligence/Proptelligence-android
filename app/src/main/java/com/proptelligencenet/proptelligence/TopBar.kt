@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
@@ -39,6 +40,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -76,16 +78,16 @@ fun CustomTopAppBar(
                 )
             }
         },
-//        actions = {
-//            IconButton(onClick = { navController.navigate("profile") }) {
-//                Icon(
-//                    imageVector = Icons.Default.AccountCircle,
-//                    contentDescription = "Profile Icon",
-//                    modifier = Modifier.padding(0.dp),
-//                    tint = Color.White
-//                )
-//            }
-//        },
+        actions = {
+            IconButton(onClick = { navController.navigate("profile") }) {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "Profile Icon",
+                    modifier = Modifier.padding(0.dp),
+                    tint = Color.White
+                )
+            }
+        },
         colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(android.graphics.Color.parseColor("#32357A"))),
     )
 }
@@ -192,6 +194,32 @@ fun CustomDrawer(
                         unselectedTextColor = Color.Black // Text color when unselected
                     )
                 )
+
+                Spacer(modifier = Modifier.weight(0.9f))
+
+                NavigationDrawerItem(
+                    label = { Text("Sign Out", color = Color.Red) },
+                    icon = { Icon(imageVector = Icons.Default.ExitToApp, contentDescription = "Sign Out") },
+                    selected = false,
+                    onClick = {
+                        // Sign out the user
+                        FirebaseAuth.getInstance().signOut()
+
+                        // Navigate to the login screen
+                        navController.navigate("login")
+                    },
+                    colors = NavigationDrawerItemDefaults.colors(
+                        selectedContainerColor = Color.White, // Background color when selected
+                        unselectedContainerColor = Color.White, // Background color when unselected
+                        selectedIconColor = Color.Black, // Icon color when selected
+                        unselectedIconColor = Color.Black, // Icon color when unselected
+                        selectedTextColor = Color.Black, // Text color when selected
+                        unselectedTextColor = Color.Black // Text color when unselected
+                    )
+                )
+
+                Spacer(modifier = Modifier.weight(0.1f))
+
                 // Add more items as needed
             }
         },
