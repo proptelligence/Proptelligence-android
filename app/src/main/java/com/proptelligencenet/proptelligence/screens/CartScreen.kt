@@ -42,7 +42,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
             text = "Cart Items",
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
-            color = androidx.compose.ui.graphics.Color.Black,
+            color = Color.Black,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
@@ -57,13 +57,13 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
                     Text(
                         text = product.name,
                         fontSize = 18.sp,
-                        color = androidx.compose.ui.graphics.Color.Black,
+                        color = Color.Black,
                         modifier = Modifier.weight(1f)
                     )
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = "Remove Item",
-                        tint = androidx.compose.ui.graphics.Color.Red,
+                        tint = Color.Red,
                         modifier = Modifier.size(24.dp)
                             .clickable { cartViewModel.removeFromCart(product) }
                     )

@@ -41,8 +41,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -214,7 +216,7 @@ fun CustomDrawer(
                 )
 
                 Spacer(modifier = Modifier.weight(0.9f))
-
+                val cartViewModel: CartViewModel = viewModel()
                 NavigationDrawerItem(
                     label = { Text("Sign Out", color = Color.Red) },
                     icon = { Icon(imageVector = Icons.Default.ExitToApp, contentDescription = "Sign Out") },
@@ -225,6 +227,10 @@ fun CustomDrawer(
 
                         // Navigate to the login screen
                         navController.navigate("login")
+
+                        cartViewModel.clearCart()
+
+
                     },
                     colors = NavigationDrawerItemDefaults.colors(
                         selectedContainerColor = Color.White, // Background color when selected

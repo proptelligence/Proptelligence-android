@@ -119,10 +119,589 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                         .padding(end = 20.dp)
                                         .clickable {
                                             // When the add icon is clicked, add the product to the cart
-                                            cartViewModel.addToCart(Product("Product Name"))
+                                            cartViewModel.addToCart(Product("Agricultural Land"))
                                         }
                                 )
 
+                            }
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Converted Land",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(end = 20.dp).clickable {
+                                        cartViewModel.addToCart(Product("Converted Land"))
+                                    }
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Commercial Properties",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(end = 20.dp).clickable {
+                                        cartViewModel.addToCart(Product("Commercial Properties"))
+                                    }                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Project Land",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Project Land")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Flat like Apartment",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Flat like Apartment")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Individual House",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Individual House")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Sites/Plots/Villas",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sites/Plots/Villas")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        Text(
+                            text = "Drafting",
+                            modifier = Modifier.padding(top = 0.dp),
+                            fontSize = 23.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Agreement Drafting",
+                            modifier = Modifier.padding(top = 0.dp),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Sales Agreement",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sales Agreement")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Rent & Lease Agreement",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Rent & Lease Agreement")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        Text(
+                            text = "Deeds",
+                            modifier = Modifier.padding(top = 0.dp),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Sale",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sale")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Gift",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Gift")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Release",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Release")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Rectification",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Rectification")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Will",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Will")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "GPA",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("GPA")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "SPA",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("SPA")) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Mortgage",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Mortgage")) },
+                                    tint = Color.Black
+                                )
                             }
                         }
 
