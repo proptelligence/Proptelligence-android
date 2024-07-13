@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.CustomDrawer
+import com.proptelligencenet.proptelligence.CustomTopAppBar
 
 @Composable
 fun ProductsScreen(navController: NavController) {

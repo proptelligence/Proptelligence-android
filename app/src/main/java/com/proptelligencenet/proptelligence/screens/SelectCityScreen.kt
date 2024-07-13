@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.R
 
 data class City(val name: String, val imageId: Int)
 

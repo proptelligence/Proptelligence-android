@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 
 import androidx.compose.foundation.Image
@@ -40,9 +40,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.google.firebase.auth.FirebaseAuth
+import com.proptelligencenet.proptelligence.R
 
 @Composable
 fun ProfileScreen(navController: NavController) {

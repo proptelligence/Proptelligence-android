@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -109,8 +110,16 @@ fun CustomDrawer(
                 .width(250.dp)
                 .background(Color.White)
             ) {
-                Spacer(modifier = Modifier.height(20.dp))
-                Text(text = "Proptelligence" , color = Color.Black, fontSize = 22.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(16.dp))
+
+                Column(
+                    modifier = Modifier
+                        .background(Color(android.graphics.Color.parseColor("#32357A")))
+                        .fillMaxWidth()
+                ) {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Text(text = "Proptelligence" , color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(16.dp))
+                }
+
                 Spacer(modifier = Modifier.height(20.dp))
                 // Add your drawer items here
                 NavigationDrawerItem(

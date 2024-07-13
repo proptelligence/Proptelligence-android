@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import PropertyItem
 import androidx.compose.foundation.background
@@ -29,18 +29,18 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.proptelligencenet.proptelligence.viewmodels.BangaloreViewModel
+import com.proptelligencenet.proptelligence.CircularProgressAnimated
+import com.proptelligencenet.proptelligence.CustomDrawer
+import com.proptelligencenet.proptelligence.CustomTopAppBar
+import com.proptelligencenet.proptelligence.viewmodels.MumbaiViewModel
 
 @Composable
-fun BangaloreProp(navController: NavController) {
-    val viewModel: BangaloreViewModel = viewModel()
-    val bangaloreProperties by viewModel.bangaloreProperties.collectAsState()
+fun MumbaiProp(navController: NavController) {
+    val viewModel: MumbaiViewModel = viewModel()
+    val mumbaiProperties by viewModel.mumbaiProperties.collectAsState()
 
     val timeoutOccurred by viewModel.timeoutOccurred.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
-
-
-
 
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -79,7 +79,7 @@ fun BangaloreProp(navController: NavController) {
                 if (errorMessage.isNotEmpty()) {
                     Text(
                         text = errorMessage,
-                        color = androidx.compose.ui.graphics.Color.Red,
+                        color = Color.Red,
                         modifier = Modifier
                             .padding(8.dp)
                             .clickable {
@@ -89,13 +89,13 @@ fun BangaloreProp(navController: NavController) {
                 }
 
                 // Show loading indicator or list of properties
-                if (bangaloreProperties == null && !timeoutOccurred) {
+                if (mumbaiProperties == null && !timeoutOccurred) {
                     //Text(text = "Loading properties...", color = Color.Black)
                     CircularProgressAnimated()
 
                 } else {
                     LazyColumn {
-                        items(bangaloreProperties ?: listOf()) { property ->
+                        items(mumbaiProperties ?: listOf()) { property ->
                             PropertyItem(property)
                         }
                     }
@@ -111,6 +111,6 @@ fun BangaloreProp(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun BangalorePropPreview() {
-    BangaloreProp(rememberNavController())
+fun MumbaiPropPreview() {
+    MumbaiProp(rememberNavController())
 }

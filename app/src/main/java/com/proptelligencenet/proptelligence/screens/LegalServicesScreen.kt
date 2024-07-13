@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import android.content.Intent
 import android.net.Uri
@@ -46,6 +46,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.proptelligencenet.proptelligence.CustomDrawer
+import com.proptelligencenet.proptelligence.CustomTopAppBar
+import com.proptelligencenet.proptelligence.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)

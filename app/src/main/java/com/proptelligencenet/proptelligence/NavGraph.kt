@@ -1,11 +1,27 @@
 package com.proptelligencenet.proptelligence
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.screens.BangaloreProp
+import com.proptelligencenet.proptelligence.screens.ChennaiProp
+import com.proptelligencenet.proptelligence.screens.CompanyScreen
+import com.proptelligencenet.proptelligence.screens.EditProfileScreen
+import com.proptelligencenet.proptelligence.screens.FormScreen
+import com.proptelligencenet.proptelligence.screens.HomeScreen
+import com.proptelligencenet.proptelligence.screens.KolkataProp
+import com.proptelligencenet.proptelligence.screens.LegalServicesScreen
+import com.proptelligencenet.proptelligence.screens.LegalSubServicesScreen
+import com.proptelligencenet.proptelligence.screens.LoginScreen
+import com.proptelligencenet.proptelligence.screens.MumbaiProp
+import com.proptelligencenet.proptelligence.screens.OtpScreen
+import com.proptelligencenet.proptelligence.screens.ProductsScreen
+import com.proptelligencenet.proptelligence.screens.ProfileScreen
+import com.proptelligencenet.proptelligence.screens.PropertyServicesScreen
+import com.proptelligencenet.proptelligence.screens.SelectCityScreen
+import com.proptelligencenet.proptelligence.screens.ServicesScreen
+import com.proptelligencenet.proptelligence.screens.SplashScreen
 import com.proptelligencenet.proptelligence.SignIn.GoogleSignInLogic
 import com.proptelligencenet.proptelligence.screens.AhmedabadProp
 import com.proptelligencenet.proptelligence.screens.HyderabadProp
@@ -15,7 +31,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
 
     //val property = Property()
 
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = "legalSubServices"){
         composable("splash"){
             SplashScreen(navController = navController)
         }
@@ -77,6 +93,10 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
 
         composable("company"){
             CompanyScreen(navController = navController)
+        }
+
+        composable("legalSubServices"){
+            LegalSubServicesScreen(navController = navController)
         }
     }
 }

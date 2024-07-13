@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -40,6 +40,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.CustomDrawer
+import com.proptelligencenet.proptelligence.CustomTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

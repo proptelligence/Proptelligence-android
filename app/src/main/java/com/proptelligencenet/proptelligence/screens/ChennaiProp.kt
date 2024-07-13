@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import PropertyItem
 import androidx.compose.foundation.background
@@ -29,6 +29,9 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.proptelligencenet.proptelligence.CircularProgressAnimated
+import com.proptelligencenet.proptelligence.CustomDrawer
+import com.proptelligencenet.proptelligence.CustomTopAppBar
 import com.proptelligencenet.proptelligence.viewmodels.ChennaiViewModel
 
 @Composable

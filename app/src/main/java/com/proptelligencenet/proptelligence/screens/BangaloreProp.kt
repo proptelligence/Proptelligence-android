@@ -1,4 +1,4 @@
-package com.proptelligencenet.proptelligence
+package com.proptelligencenet.proptelligence.screens
 
 import PropertyItem
 import androidx.compose.foundation.background
@@ -29,15 +29,21 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.proptelligencenet.proptelligence.viewmodels.MumbaiViewModel
+import com.proptelligencenet.proptelligence.CircularProgressAnimated
+import com.proptelligencenet.proptelligence.CustomDrawer
+import com.proptelligencenet.proptelligence.CustomTopAppBar
+import com.proptelligencenet.proptelligence.viewmodels.BangaloreViewModel
 
 @Composable
-fun MumbaiProp(navController: NavController) {
-    val viewModel: MumbaiViewModel = viewModel()
-    val mumbaiProperties by viewModel.mumbaiProperties.collectAsState()
+fun BangaloreProp(navController: NavController) {
+    val viewModel: BangaloreViewModel = viewModel()
+    val bangaloreProperties by viewModel.bangaloreProperties.collectAsState()
 
     val timeoutOccurred by viewModel.timeoutOccurred.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
+
+
+
 
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -86,13 +92,13 @@ fun MumbaiProp(navController: NavController) {
                 }
 
                 // Show loading indicator or list of properties
-                if (mumbaiProperties == null && !timeoutOccurred) {
+                if (bangaloreProperties == null && !timeoutOccurred) {
                     //Text(text = "Loading properties...", color = Color.Black)
                     CircularProgressAnimated()
 
                 } else {
                     LazyColumn {
-                        items(mumbaiProperties ?: listOf()) { property ->
+                        items(bangaloreProperties ?: listOf()) { property ->
                             PropertyItem(property)
                         }
                     }
@@ -108,6 +114,6 @@ fun MumbaiProp(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun MumbaiPropPreview() {
-    MumbaiProp(rememberNavController())
+fun BangalorePropPreview() {
+    BangaloreProp(rememberNavController())
 }
