@@ -12,4 +12,8 @@ class CartViewModel: ViewModel(){
     fun addToCart(product: Product) {
         cart.add(product)
     }
+
+    fun removeFromCart(product: Product) {
+        cart.remove(product)
+    }
 }

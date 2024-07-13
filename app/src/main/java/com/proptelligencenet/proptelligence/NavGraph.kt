@@ -1,6 +1,7 @@
 package com.proptelligencenet.proptelligence
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,12 +25,15 @@ import com.proptelligencenet.proptelligence.screens.ServicesScreen
 import com.proptelligencenet.proptelligence.screens.SplashScreen
 import com.proptelligencenet.proptelligence.SignIn.GoogleSignInLogic
 import com.proptelligencenet.proptelligence.screens.AhmedabadProp
+import com.proptelligencenet.proptelligence.screens.CartScreen
 import com.proptelligencenet.proptelligence.screens.HyderabadProp
+import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
 @Composable
 fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignInLogic) {
 
     //val property = Property()
+    val cartViewModel: CartViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = "legalSubServices"){
         composable("splash"){
@@ -96,7 +100,12 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
         }
 
         composable("legalSubServices"){
-            LegalSubServicesScreen(navController = navController)
+            LegalSubServicesScreen(navController = navController, cartViewModel = cartViewModel)
         }
+
+        composable("cart"){
+            CartScreen(navController = navController, cartViewModel = cartViewModel)
+        }
+
     }
 }

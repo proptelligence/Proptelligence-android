@@ -27,6 +27,7 @@ import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -80,6 +81,14 @@ fun CustomTopAppBar(
             }
         },
         actions = {
+            IconButton(onClick = { navController.navigate("cart") }) {
+                Icon(
+                    imageVector = Icons.Default.ShoppingCart,
+                    contentDescription = "Profile Icon",
+                    modifier = Modifier.padding(0.dp),
+                    tint = Color.White
+                )
+            }
             IconButton(onClick = { navController.navigate("profile") }) {
                 Icon(
                     imageVector = Icons.Default.AccountCircle,
