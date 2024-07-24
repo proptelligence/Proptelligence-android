@@ -183,7 +183,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     color = Color.Black
                                 )
 
-                                Button(onClick = {},
+                                Button(onClick = {navController.navigate("legalSubServices")},
                                     modifier = Modifier.padding(10.dp),
                                     shape = RoundedCornerShape(10.dp),
                                     colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
@@ -206,7 +206,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     .padding(8.dp)
                                     .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
 
-                                onClick = {}
+                                onClick = {navController.navigate("legalSubServices")}
 
                             ) {
                                 Column(
@@ -238,7 +238,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     .weight(1f)
                                     .padding(8.dp)
                                     .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
-                                onClick = {}
+                                onClick = {navController.navigate("legalSubServices")}
 
                             ) {
                                 Column(
@@ -274,7 +274,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     .weight(1f)
                                     .padding(8.dp)
                                     .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
-                                onClick = {}
+                                onClick = {navController.navigate("legalSubServices")}
 
                             ) {
                                 Column(
@@ -305,7 +305,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     .weight(1f)
                                     .padding(8.dp)
                                     .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
-                                onClick = {}
+                                onClick = {navController.navigate("legalSubServices")}
 
                             ) {
                                 Column(

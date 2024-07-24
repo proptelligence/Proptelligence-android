@@ -84,6 +84,8 @@ dependencies {
 
     implementation (libs.facebook.login)
 
+    implementation (libs.androidsvg.aar)
+
 
 
 
