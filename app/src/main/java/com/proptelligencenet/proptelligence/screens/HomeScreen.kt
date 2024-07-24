@@ -118,12 +118,80 @@ fun HomeScreen(navController: NavController) {
                         )
                         Spacer(modifier = Modifier.height(100.dp))
                         Text(
-                            text = "Services",
+                            text = "Explore Services",
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
                         )
                         Spacer(modifier = Modifier.height(20.dp))
+
+                        Row {
+                            Card(
+                                modifier = Modifier
+                                    .size(170.dp)
+                                    .padding(8.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .clickable { navController.navigate("legalServices") },
+                                shape = RoundedCornerShape(8.dp),
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
+                            ) {
+                                Column {
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830080/proptelligence/fbabrbvxhwdjmuhm9kw7.png")
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "Legal Services Image",
+                                        modifier = Modifier
+                                            .height(100.dp)
+                                            .fillMaxWidth(),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                    Text(
+                                        text = "Legal Services",
+                                        modifier = Modifier.padding(8.dp),
+                                        fontWeight = FontWeight.Normal,
+                                        color = Color.Black
+                                    )
+                                }
+                            }
+                            
+                            Spacer(modifier = Modifier.width(5.dp))
+
+                            Card(
+                                modifier = Modifier
+                                    .size(170.dp)
+                                    .padding(8.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .clickable { navController.navigate("propertyServices") },
+                                shape = RoundedCornerShape(8.dp),
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
+                            ) {
+                                Column {
+                                    AsyncImage(
+                                        model = ImageRequest.Builder(LocalContext.current)
+                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830096/proptelligence/yf0xrbvvlfie7ggnetym.png")
+                                            .crossfade(true)
+                                            .build(),
+                                        contentDescription = "Property Services Image",
+                                        modifier = Modifier
+                                            .height(100.dp)
+                                            .fillMaxWidth(),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                    Text(
+                                        text = "Property Services",
+                                        modifier = Modifier.padding(8.dp),
+                                        fontWeight = FontWeight.Normal,
+                                        color = Color.Black
+                                    )
+                                }
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(80.dp))
                         ContentView()
                         Spacer(modifier = Modifier.height(100.dp))
 
@@ -163,9 +231,9 @@ fun HomeScreen(navController: NavController) {
                             modifier = Modifier
                                 .padding(8.dp)
                                 .width(300.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(8.dp)), // Make card fill width
-                            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp), // Add elevation
+                                .clip(RoundedCornerShape(8.dp)),
+                                //.border(0.5.dp, Color.Gray, shape = RoundedCornerShape(8.dp)), // Make card fill width
+                            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp), // Add elevation
                             shape = RoundedCornerShape(8.dp), // Add rounded corners
                             colors = CardDefaults.cardColors(containerColor = Color.White), // Set card color
                             onClick = {

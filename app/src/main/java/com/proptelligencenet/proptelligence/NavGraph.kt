@@ -35,7 +35,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
     //val property = Property()
     val cartViewModel: CartViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = "home"){
         composable("splash"){
             SplashScreen(navController = navController)
         }

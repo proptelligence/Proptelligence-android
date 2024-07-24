@@ -1,35 +1,37 @@
 package com.proptelligencenet.proptelligence.screens
 
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.util.Base64
-import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asImageBitmap
+
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 
@@ -39,9 +41,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import coil.compose.rememberImagePainter
+
 import coil.request.ImageRequest
-import com.caverock.androidsvg.SVG
+
 import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
 @Composable
@@ -50,7 +52,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
 
 
     LaunchedEffect(key1 = Unit) {
-        cartViewModel.fetchQRCode("Shreyas", "shreyassp002@oksbi", "200")
+        cartViewModel.fetchQRCode("Proptelligence", "proptelligencetech@sbi", "${cartViewModel.cart.sumBy { it.price }}")
     }
 
 
@@ -60,12 +62,22 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
         .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = {navController.popBackStack()}) {
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.Black)
+            }
+        }
+
         Text(
             text = "Cart Items",
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black,
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier.padding(top = 0.dp)
         )
 
         LazyColumn {
@@ -77,7 +89,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = product.name,
+                        text = "${product.name} - ${product.price}",
                         fontSize = 18.sp,
                         color = Color.Black,
                         modifier = Modifier.weight(1f)
@@ -86,17 +98,55 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
                         imageVector = Icons.Default.Delete,
                         contentDescription = "Remove Item",
                         tint = Color.Red,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier
+                            .size(24.dp)
                             .clickable { cartViewModel.removeFromCart(product) }
                     )
                 }
             }
         }
-        var amount = "500"
+
+        Spacer(modifier = Modifier.size(16.dp))
+
+        if (cartViewModel.cart.isEmpty()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 200.dp),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Cart is Empty",
+                    fontSize = 20.sp,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.height(30.dp))
+                Button(onClick = {navController.navigate("legalSubServices")},
+                    modifier = Modifier.padding(10.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
+                ) {
+                    Text(text = "Book Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+
+                }
+            }
+        } else {
+            Spacer(modifier = Modifier.size(16.dp))
+            Text(
+                text = "Total: ${cartViewModel.cart.sumBy { it.price }}",
+                fontSize = 20.sp,
+                color = Color.Black,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        }
+        Spacer(modifier = Modifier.height(80.dp))
+
+        var amount = cartViewModel.cart.sumBy { it.price }
 
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data("https://upiqr.in/api/qr?name=satyam&vpa=satyam2001anand@oksbi&format=png&amount=$amount")
+                .data("https://upiqr.in/api/qr?name=Proptelligence&vpa=proptelligencetech@sbi&format=png&amount=$amount")
                 .crossfade(true)
                 .build(),
             contentDescription = "Property Image",

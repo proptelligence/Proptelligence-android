@@ -119,7 +119,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                         .padding(end = 20.dp)
                                         .clickable {
                                             // When the add icon is clicked, add the product to the cart
-                                            cartViewModel.addToCart(Product("Agricultural Land"))
+                                            cartViewModel.addToCart(Product("Agricultural Land", 500))
                                         }
                                 )
 
@@ -157,7 +157,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                     contentDescription = "Add icon",
                                     tint = Color.Black,
                                     modifier = Modifier.padding(end = 20.dp).clickable {
-                                        cartViewModel.addToCart(Product("Converted Land"))
+                                        cartViewModel.addToCart(Product("Converted Land", 500))
                                     }
                                 )
                             }
@@ -193,7 +193,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                     contentDescription = "Add icon",
                                     tint = Color.Black,
                                     modifier = Modifier.padding(end = 20.dp).clickable {
-                                        cartViewModel.addToCart(Product("Commercial Properties"))
+                                        cartViewModel.addToCart(Product("Commercial Properties", 500))
                                     }                                )
                             }
                         }
@@ -226,7 +226,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Project Land")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Project Land", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -261,7 +261,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Flat like Apartment")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Flat like Apartment", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -295,7 +295,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Individual House")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Individual House", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -329,7 +329,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sites/Plots/Villas")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sites/Plots/Villas", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -381,7 +381,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sales Agreement")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sales Agreement", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -416,7 +416,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Rent & Lease Agreement")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Rent & Lease Agreement", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -460,7 +460,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sale")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sale", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -494,7 +494,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Gift")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Gift", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -528,7 +528,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Release")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Release", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -562,7 +562,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Rectification")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Rectification", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -596,7 +596,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Will")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Will", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -630,7 +630,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("GPA")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("GPA", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -664,7 +664,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("SPA")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("SPA", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -699,7 +699,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Mortgage")) },
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Mortgage", 500)) },
                                     tint = Color.Black
                                 )
                             }

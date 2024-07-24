@@ -1,5 +1,6 @@
 package com.proptelligencenet.proptelligence.screens
 
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -11,9 +12,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -71,6 +74,9 @@ fun SplashScreen(navController: NavController) {
     }
 
     Splash(alpha = alphaAnim.value)
+
+
+
 }
 
 @Composable
@@ -107,7 +113,7 @@ fun Splash(alpha: Float) {
                 fontWeight = FontWeight.ExtraBold,
                 fontFamily = FontFamily.Serif,
                 modifier = Modifier
-                    .alpha(alpha)
+
                     .graphicsLayer { translationY = textOffset }
             )
 
@@ -118,11 +124,11 @@ fun Splash(alpha: Float) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.star),
-                    contentDescription = "Google Sign In",
+                    contentDescription = "Star icon",
                     modifier = Modifier
-                        .alpha(alpha)
+
                         .size(25.dp)
-                        .scale(alpha) // Added scaling effect
+
                 )
 
                 Spacer(modifier = Modifier.width(10.dp))
@@ -133,11 +139,54 @@ fun Splash(alpha: Float) {
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
                     fontFamily = FontFamily.Cursive,
-                    modifier = Modifier
-                        .alpha(alpha)
-                        .scale(alpha) // Added scaling effect
+
+
                 )
             }
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            // Create an Animatable to hold the progress of the loading bar
+            val progress = remember { Animatable(0f) }
+
+            // Animate the progress from 0 to 1 and then back to 0
+            LaunchedEffect(key1 = Unit) {
+                while (true) {
+                    progress.animateTo(
+                        targetValue = 1f,
+                        animationSpec = tween(durationMillis = 500)
+                    )
+                    progress.animateTo(
+                        targetValue = 0f,
+                        animationSpec = tween(durationMillis = 500)
+                    )
+                    progress.animateTo(
+                        targetValue = 1f,
+                        animationSpec = tween(durationMillis = 500)
+                    )
+                    progress.animateTo(
+                        targetValue = 0f,
+                        animationSpec = tween(durationMillis = 500)
+                    )
+                    progress.animateTo(
+                        targetValue = 1f,
+                        animationSpec = tween(durationMillis = 500)
+                    )
+                    progress.animateTo(
+                        targetValue = 0f,
+                        animationSpec = tween(durationMillis = 500)
+                    )
+                }
+            }
+
+            // Display the loading bar
+            LinearProgressIndicator(
+                progress = progress.value,
+                color = Color(0xFF6167F5), // Set the color to blue
+                modifier = Modifier
+                    .fillMaxWidth(0.2f) // Fill 50% of the available width
+                    .height(4.dp) // Set the height to 4dp
+            )
             
         }
     }

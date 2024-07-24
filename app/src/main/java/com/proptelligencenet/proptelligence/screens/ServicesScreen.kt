@@ -81,7 +81,7 @@ fun ServicesScreen(navController: NavController) {
                                 .fillMaxSize()
                                 .background(color = Color(android.graphics.Color.parseColor("#F2F1F6")))
                                 .padding(
-                                    top = 50.dp,
+                                    top = 10.dp,
                                     start = 16.dp,
                                     end = 16.dp
                                 ), // Add padding around cards
@@ -175,7 +175,7 @@ fun ServicesScreen(navController: NavController) {
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(100.dp))
+                        Spacer(modifier = Modifier.height(180.dp))
 
                         Column(
                             modifier = Modifier
