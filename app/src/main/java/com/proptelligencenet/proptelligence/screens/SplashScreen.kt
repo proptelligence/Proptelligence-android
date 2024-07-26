@@ -113,7 +113,7 @@ fun Splash(alpha: Float) {
                 fontWeight = FontWeight.ExtraBold,
                 fontFamily = FontFamily.Serif,
                 modifier = Modifier
-
+                    .alpha(alpha)
                     .graphicsLayer { translationY = textOffset }
             )
 
@@ -126,7 +126,7 @@ fun Splash(alpha: Float) {
                     painter = painterResource(id = R.drawable.star),
                     contentDescription = "Star icon",
                     modifier = Modifier
-
+                        .alpha(alpha)
                         .size(25.dp)
 
                 )
@@ -139,6 +139,7 @@ fun Splash(alpha: Float) {
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
                     fontFamily = FontFamily.Cursive,
+                    modifier = Modifier.alpha(alpha)
 
 
                 )
