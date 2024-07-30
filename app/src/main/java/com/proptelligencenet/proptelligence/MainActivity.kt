@@ -19,9 +19,9 @@ import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
-    private val RC_SIGN_IN = 9001 // Add this line
-    private lateinit var googleSignInLogic: GoogleSignInLogic // Add this line
-    private lateinit var navController: NavController // Add this line
+    private val RC_SIGN_IN = 9001
+    private lateinit var googleSignInLogic: GoogleSignInLogic
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
