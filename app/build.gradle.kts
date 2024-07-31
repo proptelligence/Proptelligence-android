@@ -82,10 +82,6 @@ dependencies {
 
     implementation(libs.coil.compose)
 
-    implementation (libs.facebook.login)
-
-    implementation (libs.androidsvg.aar)
-
 
 
 

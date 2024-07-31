@@ -33,9 +33,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -105,19 +107,17 @@ fun LoginScreen(navController: NavController, googleSignInLogic: GoogleSignInLog
             verticalArrangement = Arrangement.Top
         ) {
 
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://res.cloudinary.com/duot2ognl/image/upload/v1720028066/proptelligence/q4ngimcfnpv3rerpc645.jpg")
-                    .crossfade(true)
-                    .build(),
-                contentDescription = "Service Images",
+
+
+            Image(
+                painter = painterResource(id = R.drawable.ic_proptelligence_logo),
+                contentDescription = "App Logo",
                 modifier = Modifier
                     .size(220.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .align(Alignment.CenterHorizontally),
-                //contentScale = ContentScale.Crop
+                    .align(Alignment.CenterHorizontally)
             )
-            Spacer(modifier = Modifier.size(30.dp))
+
+            Spacer(modifier = Modifier.height(30.dp))
             Text(
                 text = "Enter your mobile number",
                 color = Color(android.graphics.Color.parseColor("#32357A")),

@@ -1,22 +1,13 @@
 package com.proptelligencenet.proptelligence.screens
 
-import androidx.compose.animation.core.Animatable
+
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,14 +18,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,7 +39,6 @@ fun SplashScreen(navController: NavController) {
         targetValue = if (startAnimation) 1f else 0f,
         animationSpec = tween(durationMillis = 3000)
     )
-
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(3000)
@@ -76,7 +64,6 @@ fun SplashScreen(navController: NavController) {
     Splash(alpha = alphaAnim.value)
 
 
-
 }
 
 @Composable
@@ -85,14 +72,14 @@ fun Splash(alpha: Float) {
         modifier = Modifier
             .fillMaxSize()
             .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF32357A),
-                        Color(0xFFFFFFFF)
-                    )
-                )
-            ),
-        contentAlignment = Alignment.Center
+//                brush = Brush.verticalGradient(
+//                    colors= listOf(
+//                        Color(android.graphics.Color.parseColor("#32357A")),
+//                        Color(android.graphics.Color.parseColor("#FFFFFF"))
+//                    )
+//                )
+                color = Color(android.graphics.Color.parseColor("#F2F1F6"))
+            )
     ) {
         var textOffset by remember { mutableStateOf(0f) }
         val offsetAnim = animateFloatAsState(
@@ -100,96 +87,21 @@ fun Splash(alpha: Float) {
             animationSpec = tween(durationMillis = 1000)
         )
 
-        LaunchedEffect(key1 = alpha) { textOffset = offsetAnim.value }
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "PROPTELLIGENCE",
-                color = Color.White,
-                fontSize = 35.sp,
-                fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily.Serif,
-                modifier = Modifier
-                    .alpha(alpha)
-                    .graphicsLayer { translationY = textOffset }
-            )
-
-            Spacer(modifier = Modifier.height(30.dp))
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.star),
-                    contentDescription = "Star icon",
-                    modifier = Modifier
-                        .alpha(alpha)
-                        .size(25.dp)
-
-                )
-
-                Spacer(modifier = Modifier.width(10.dp))
-
-                Text(
-                    text = "1 YEAR ANNIVERSARY",
-                    color = Color.White,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.Cursive,
-                    modifier = Modifier.alpha(alpha)
-
-
-                )
-            }
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            // Create an Animatable to hold the progress of the loading bar
-            val progress = remember { Animatable(0f) }
-
-            // Animate the progress from 0 to 1 and then back to 0
-            LaunchedEffect(key1 = Unit) {
-                while (true) {
-                    progress.animateTo(
-                        targetValue = 1f,
-                        animationSpec = tween(durationMillis = 500)
-                    )
-                    progress.animateTo(
-                        targetValue = 0f,
-                        animationSpec = tween(durationMillis = 500)
-                    )
-                    progress.animateTo(
-                        targetValue = 1f,
-                        animationSpec = tween(durationMillis = 500)
-                    )
-                    progress.animateTo(
-                        targetValue = 0f,
-                        animationSpec = tween(durationMillis = 500)
-                    )
-                    progress.animateTo(
-                        targetValue = 1f,
-                        animationSpec = tween(durationMillis = 500)
-                    )
-                    progress.animateTo(
-                        targetValue = 0f,
-                        animationSpec = tween(durationMillis = 500)
-                    )
-                }
-            }
-
-            // Display the loading bar
-            LinearProgressIndicator(
-                progress = progress.value,
-                color = Color(0xFF6167F5), // Set the color to blue
-                modifier = Modifier
-                    .fillMaxWidth(0.2f) // Fill 50% of the available width
-                    .height(4.dp) // Set the height to 4dp
-            )
-            
+        LaunchedEffect(key1 = alpha) {textOffset = offsetAnim.value
         }
+
+        val logo: Painter = painterResource(id = R.drawable.app_logo)
+        Image(
+            painter = logo,
+            contentDescription = "App Logo",
+            modifier = Modifier
+                .align(Alignment.Center)
+                .alpha(alpha)
+                .size(180.dp)
+                .graphicsLayer {
+                    translationY = textOffset
+                }
+        )
     }
 }
 
