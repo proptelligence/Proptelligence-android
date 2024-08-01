@@ -1,14 +1,17 @@
 package com.proptelligencenet.proptelligence
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,6 +40,7 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -57,12 +61,21 @@ fun CustomTopAppBar(
 ) {
     TopAppBar(
         title = {
-            Text(
-                text = "Proptelligence",
-                color = Color.White,
-                fontSize = 20.sp,
-                modifier = Modifier.padding(0.dp)
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = painterResource(id = R.drawable.app_logo), // Replace with your image resource
+                    contentDescription = "Logo",
+                    modifier = Modifier
+                        .size(40.dp) // Adjust the size as needed
+                        .padding(end = 8.dp) // Add some padding to the end of the image
+                )
+                Text(
+                    text = "Proptelligence",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(0.dp)
+                )
+            }
         },
         navigationIcon = {
             IconButton(onClick = {

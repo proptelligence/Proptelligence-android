@@ -6,14 +6,6 @@
         <entry key="Firebase Crashlytics">
           <value>
             <InsightsFilterSettings>
-              <option name="connection">
-                <ConnectionSetting>
-                  <option name="appId" value="com.proptelligencenet.proptelligence" />
-                  <option name="mobileSdkAppId" value="1:471806033526:android:514c69d4b59de5ad3a6957" />
-                  <option name="projectId" value="proptelligence--mobile-dev" />
-                  <option name="projectNumber" value="471806033526" />
-                </ConnectionSetting>
-              </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
               <option name="timeIntervalDays" value="THIRTY_DAYS" />
               <option name="visibilityType" value="ALL" />

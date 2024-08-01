@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -59,8 +60,7 @@ fun HomeScreen(navController: NavController) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(color = Color(android.graphics.Color.parseColor("#F2F1F6")))
-                    .padding(top = 65.dp),
+                    .background(color = Color(android.graphics.Color.parseColor("#F2F1F6"))),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top
             ) {
@@ -68,55 +68,76 @@ fun HomeScreen(navController: NavController) {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(0.dp),
+                    contentPadding = PaddingValues(0.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     item {
-                        Text(
-                            text = "Unlock Our Free Property",
-                            modifier = Modifier.padding(top = 100.dp),
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "Service",
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Black
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
-                        AsyncImage(
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830089/proptelligence/hzqxn8dm66bcoqplp4hh.png")
-                                .crossfade(true)
-                                .build(),
-                            contentDescription = "Property Image",
+                        Box(
                             modifier = Modifier
-                                .size(230.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .align(Alignment.CenterHorizontally),
-                            contentScale = ContentScale.Crop
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = "Experience effortless property management with",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "Proptelligence. With our free services, managing",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Black
-                        )
-                        Text(
-                            text = "your properties has never been easier.",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.Black
-                        )
-                        Spacer(modifier = Modifier.height(100.dp))
+                                .fillMaxWidth() // Make box fill width
+                                .height(280.dp), // Set the height of the box
+                            contentAlignment = Alignment.Center // Align the content in the center of the box
+                        ) {
+
+                            Image(
+                                painter = painterResource(id = R.drawable.home_background),
+                                contentDescription = "Home background",
+                                modifier = Modifier
+                                    .fillMaxSize(), // Make image fill the box
+                                contentScale = ContentScale.Crop
+                            )
+                            Surface(
+                                color = Color.Black.copy(alpha = 0.4f), // Semi-transparent black color
+                                modifier = Modifier
+                                    .fillMaxSize() // Make surface fill the box
+                            ) {
+                                // Add your content here
+                                Column(
+                                    modifier = Modifier
+                                        .padding(top = 0.dp),
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.Center,
+                                ) {
+                                    Spacer(modifier = Modifier.height(60.dp))
+                                    Text(
+                                        text = "Unlock Our Free Property",
+                                        fontSize = 24.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White,
+                                    )
+                                    Text(
+                                        text = "Service",
+                                        fontSize = 24.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White,
+                                    )
+
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                    Text(
+                                        text = "Experience effortless property management with",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.White
+                                    )
+                                    Text(
+                                        text = "Proptelligence. With our free services, managing",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.White
+                                    )
+                                    Text(
+                                        text = "your properties has never been easier.",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.White
+                                    )
+
+                                }
+                            }
+
+
+                        }
+                        Spacer(modifier = Modifier.height(60.dp))
                         Text(
                             text = "Explore Services",
                             fontSize = 30.sp,
@@ -137,11 +158,8 @@ fun HomeScreen(navController: NavController) {
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
                             ) {
                                 Column {
-                                    AsyncImage(
-                                        model = ImageRequest.Builder(LocalContext.current)
-                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830080/proptelligence/fbabrbvxhwdjmuhm9kw7.png")
-                                            .crossfade(true)
-                                            .build(),
+                                    Image(
+                                        painter = painterResource(id = R.drawable.service_legal),
                                         contentDescription = "Legal Services Image",
                                         modifier = Modifier
                                             .height(100.dp)
@@ -151,7 +169,7 @@ fun HomeScreen(navController: NavController) {
                                     Text(
                                         text = "Legal Services",
                                         modifier = Modifier.padding(8.dp),
-                                        fontWeight = FontWeight.Normal,
+                                        fontWeight = FontWeight.SemiBold,
                                         color = Color.Black
                                     )
                                 }
@@ -170,11 +188,8 @@ fun HomeScreen(navController: NavController) {
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
                             ) {
                                 Column {
-                                    AsyncImage(
-                                        model = ImageRequest.Builder(LocalContext.current)
-                                            .data("https://res.cloudinary.com/duot2ognl/image/upload/v1719830096/proptelligence/yf0xrbvvlfie7ggnetym.png")
-                                            .crossfade(true)
-                                            .build(),
+                                    Image(
+                                        painter = painterResource(id = R.drawable.service_property),
                                         contentDescription = "Property Services Image",
                                         modifier = Modifier
                                             .height(100.dp)
@@ -184,7 +199,7 @@ fun HomeScreen(navController: NavController) {
                                     Text(
                                         text = "Property Services",
                                         modifier = Modifier.padding(8.dp),
-                                        fontWeight = FontWeight.Normal,
+                                        fontWeight = FontWeight.SemiBold,
                                         color = Color.Black
                                     )
                                 }
@@ -195,27 +210,47 @@ fun HomeScreen(navController: NavController) {
                         ContentView()
                         Spacer(modifier = Modifier.height(100.dp))
 
-                        Column(
+
+                        Box(
                             modifier = Modifier
-                                .background(color = Color(android.graphics.Color.parseColor("#abe2fa")))
-
-                        ) {
-                            Column(modifier = Modifier.padding(16.dp)) {
-                                Text(
-                                    text = "Get Free Real Estate Guidance & Secure Legal Support",
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color.Black
-                                )
-                                Spacer(modifier = Modifier.height(20.dp))
-                                Text(
-                                    text = "Get expert guidance throughout your real estate journey, with a FREE consultation and access to our optional legal support. Don't let legal worries slow you down. Proptelligence empowers you with the resources and expertise you need to make informed decisions and navigate the real estate market with confidence.",
-                                    fontSize = 15.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = Color.Black
-                                )
+                                .fillMaxWidth() // Make box fill width
+                                .height(300.dp), // Set the height of the box
+                            contentAlignment = Alignment.Center // Align the content in the center of the box
+                        ){
+                            Image(
+                                painter = painterResource(id = R.drawable.get_background),
+                                contentDescription = "Get background",
+                                modifier = Modifier
+                                    .fillMaxSize(), // Make image fill the box
+                                contentScale = ContentScale.Crop
+                            )
+                            Surface(
+                                color = Color.Black.copy(alpha = 0.3f), // Semi-transparent black color
+                                modifier = Modifier
+                                    .fillMaxSize() // Make surface fill the box
+                            ) {
+                                Column(modifier = Modifier.padding(10.dp)) {
+                                    Text(
+                                        text = "Get Free Real Estate Guidance",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White
+                                    )
+                                    Text(
+                                        text = "& Secure Legal Support",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White
+                                    )
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                    Text(
+                                        text = "Get expert guidance throughout your real estate journey, with a FREE consultation and access to our optional legal support. Don't let legal worries slow you down. Proptelligence empowers you with the resources and expertise you need to make informed decisions and navigate the real estate market with confidence.",
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.White
+                                    )
+                                }
                             }
-
                         }
 
                         Spacer(modifier = Modifier.height(100.dp))
@@ -249,12 +284,9 @@ fun HomeScreen(navController: NavController) {
                                     .padding(0.dp) // Add padding within the card
                             ) {
 
-                                AsyncImage(
-                                    model = ImageRequest.Builder(LocalContext.current)
-                                        .data("https://res.cloudinary.com/ajaymedidhi7/image/upload/v1709876547/s_vmo3j9.jpg")
-                                        .crossfade(true)
-                                        .build(),
-                                    contentDescription = "Property Image",
+                                Image(
+                                    painter = painterResource(id = R.drawable.blog),
+                                    contentDescription = "Blogs Image",
                                     modifier = Modifier
 
                                         .fillMaxSize()
@@ -298,7 +330,7 @@ fun HomeScreen(navController: NavController) {
                                     ) {
                                         Text(
                                             text = "Company",
-                                            fontSize = 20.sp,
+                                            fontSize = 17.sp,
                                             fontWeight = FontWeight.Bold,
                                             color = Color.White
                                         )
@@ -306,7 +338,7 @@ fun HomeScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
                                             text = "Home",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -316,7 +348,7 @@ fun HomeScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "About Us",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -326,7 +358,7 @@ fun HomeScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "Services",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -336,7 +368,7 @@ fun HomeScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "Solutions",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -346,7 +378,7 @@ fun HomeScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "Contact Us",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -361,14 +393,14 @@ fun HomeScreen(navController: NavController) {
 
                                         Text(
                                             text = "Our Presence",
-                                            fontSize = 20.sp,
+                                            fontSize = 17.sp,
                                             fontWeight = FontWeight.Bold,
                                             color = Color.White
                                         )
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
                                             text = "We Work, Roshini Tech Hub, Anand Nagar, Aswath Nagar, Chinnapanna Halli, Bengaluru, Karnataka 560037",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White
                                         )
@@ -378,7 +410,7 @@ fun HomeScreen(navController: NavController) {
 
 
                             }
-                            Spacer(modifier = Modifier.height(20.dp))
+                            Spacer(modifier = Modifier.height(10.dp))
 
                             Column(
                                 verticalArrangement = Arrangement.Center,
@@ -386,7 +418,7 @@ fun HomeScreen(navController: NavController) {
                             ) {
                                 Text(
                                     text = "Follow Us",
-                                    fontSize = 20.sp,
+                                    fontSize = 17.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color.White
                                 )
@@ -400,7 +432,7 @@ fun HomeScreen(navController: NavController) {
                                         painter = painterResource(id = R.drawable.ic_facebook), // Use your Facebook image file
                                         contentDescription = "facebook icon",
                                         modifier = Modifier
-                                            .size(40.dp) // Set the size of the image
+                                            .size(30.dp) // Set the size of the image
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -414,7 +446,7 @@ fun HomeScreen(navController: NavController) {
                                         painter = painterResource(id = R.drawable.ic_instagram), // Use your Facebook image file
                                         contentDescription = "instagram icon",
                                         modifier = Modifier
-                                            .size(40.dp) // Set the size of the image
+                                            .size(30.dp) // Set the size of the image
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -427,7 +459,7 @@ fun HomeScreen(navController: NavController) {
                                     Image(
                                         painter = painterResource(id = R.drawable.ic_youtube),contentDescription = "youtube icon",
                                         modifier = Modifier
-                                            .size(40.dp)
+                                            .size(30.dp)
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -441,7 +473,7 @@ fun HomeScreen(navController: NavController) {
                                         painter = painterResource(id = R.drawable.ic_linkedin), // Use your Facebook image file
                                         contentDescription = "linkedin icon",
                                         modifier = Modifier
-                                            .size(40.dp) // Set the size of the image
+                                            .size(30.dp) // Set the size of the image
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -452,11 +484,11 @@ fun HomeScreen(navController: NavController) {
                                     )
                                 }
 
-                                Spacer(modifier = Modifier.height(30.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
 
                                 Text(
                                     text = "Legal",
-                                    fontSize = 20.sp,
+                                    fontSize = 17.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color.White
                                 )
@@ -471,7 +503,7 @@ fun HomeScreen(navController: NavController) {
                                     ) {
                                         Text(
                                             text = "Privacy Policy",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier
@@ -487,7 +519,7 @@ fun HomeScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.width(15.dp))
                                         Text(
                                             text = "Terms & Conditions",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier
@@ -504,7 +536,7 @@ fun HomeScreen(navController: NavController) {
                                     Spacer(modifier = Modifier.height(5.dp))
                                     Text(
                                         text = "Refund & Cancellation Policy",
-                                        fontSize = 15.sp,
+                                        fontSize = 12.sp,
                                         fontWeight = FontWeight.Normal,
                                         color = Color.White,
                                         modifier = Modifier
