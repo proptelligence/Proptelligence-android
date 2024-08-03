@@ -356,7 +356,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     ) {
                                         Text(
                                             text = "Company",
-                                            fontSize = 20.sp,
+                                            fontSize = 17.sp,
                                             fontWeight = FontWeight.Bold,
                                             color = Color.White
                                         )
@@ -364,7 +364,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
                                             text = "Home",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -374,7 +374,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "About Us",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -384,7 +384,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "Services",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -394,7 +394,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "Solutions",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -404,7 +404,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.height(5.dp))
                                         Text(
                                             text = "Contact Us",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier.clickable {
@@ -419,14 +419,14 @@ fun LegalServicesScreen(navController: NavController) {
 
                                         Text(
                                             text = "Our Presence",
-                                            fontSize = 20.sp,
+                                            fontSize = 17.sp,
                                             fontWeight = FontWeight.Bold,
                                             color = Color.White
                                         )
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
                                             text = "We Work, Roshini Tech Hub, Anand Nagar, Aswath Nagar, Chinnapanna Halli, Bengaluru, Karnataka 560037",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White
                                         )
@@ -436,7 +436,7 @@ fun LegalServicesScreen(navController: NavController) {
 
 
                             }
-                            Spacer(modifier = Modifier.height(20.dp))
+                            Spacer(modifier = Modifier.height(10.dp))
 
                             Column(
                                 verticalArrangement = Arrangement.Center,
@@ -444,7 +444,7 @@ fun LegalServicesScreen(navController: NavController) {
                             ) {
                                 Text(
                                     text = "Follow Us",
-                                    fontSize = 20.sp,
+                                    fontSize = 17.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color.White
                                 )
@@ -458,7 +458,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         painter = painterResource(id = R.drawable.ic_facebook), // Use your Facebook image file
                                         contentDescription = "facebook icon",
                                         modifier = Modifier
-                                            .size(40.dp) // Set the size of the image
+                                            .size(30.dp) // Set the size of the image
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -472,7 +472,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         painter = painterResource(id = R.drawable.ic_instagram), // Use your Facebook image file
                                         contentDescription = "instagram icon",
                                         modifier = Modifier
-                                            .size(40.dp) // Set the size of the image
+                                            .size(30.dp) // Set the size of the image
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -485,7 +485,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     Image(
                                         painter = painterResource(id = R.drawable.ic_youtube),contentDescription = "youtube icon",
                                         modifier = Modifier
-                                            .size(40.dp)
+                                            .size(30.dp)
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -499,7 +499,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         painter = painterResource(id = R.drawable.ic_linkedin), // Use your Facebook image file
                                         contentDescription = "linkedin icon",
                                         modifier = Modifier
-                                            .size(40.dp) // Set the size of the image
+                                            .size(30.dp) // Set the size of the image
                                             .clickable {
                                                 val intent = Intent(Intent.ACTION_VIEW).apply {
                                                     data =
@@ -510,11 +510,11 @@ fun LegalServicesScreen(navController: NavController) {
                                     )
                                 }
 
-                                Spacer(modifier = Modifier.height(30.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
 
                                 Text(
                                     text = "Legal",
-                                    fontSize = 20.sp,
+                                    fontSize = 17.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color.White
                                 )
@@ -529,7 +529,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     ) {
                                         Text(
                                             text = "Privacy Policy",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier
@@ -545,7 +545,7 @@ fun LegalServicesScreen(navController: NavController) {
                                         Spacer(modifier = Modifier.width(15.dp))
                                         Text(
                                             text = "Terms & Conditions",
-                                            fontSize = 15.sp,
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Normal,
                                             color = Color.White,
                                             modifier = Modifier
@@ -562,7 +562,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     Spacer(modifier = Modifier.height(5.dp))
                                     Text(
                                         text = "Refund & Cancellation Policy",
-                                        fontSize = 15.sp,
+                                        fontSize = 12.sp,
                                         fontWeight = FontWeight.Normal,
                                         color = Color.White,
                                         modifier = Modifier
@@ -575,7 +575,7 @@ fun LegalServicesScreen(navController: NavController) {
                                             }
                                     )
                                 }
-                                Spacer(modifier = Modifier.height(30.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
 
 
                                 Text(
