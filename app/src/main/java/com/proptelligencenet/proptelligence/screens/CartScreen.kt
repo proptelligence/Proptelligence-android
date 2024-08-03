@@ -15,12 +15,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -48,18 +52,18 @@ import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
 @Composable
 fun CartScreen(navController: NavController, cartViewModel: CartViewModel = viewModel()) {
-
-
+    val scrollState = rememberScrollState()  // Remember scroll state
 
     LaunchedEffect(key1 = Unit) {
         cartViewModel.fetchQRCode("Proptelligence", "proptelligencetech@sbi", "${cartViewModel.cart.sumBy { it.price }}")
     }
 
-
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(color = Color(android.graphics.Color.parseColor("#F2F1F6")))
-        .padding(16.dp),
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color(android.graphics.Color.parseColor("#F2F1F6")))
+            .padding(16.dp)
+            .verticalScroll(scrollState),  // Make the whole content scrollable
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -67,7 +71,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = {navController.popBackStack()}) {
+            IconButton(onClick = { navController.popBackStack() }) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.Black)
             }
         }
@@ -79,30 +83,41 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
             color = Color.Black,
             modifier = Modifier.padding(top = 0.dp)
         )
+        Spacer(modifier = Modifier.size(16.dp))
 
-        LazyColumn {
-            items(cartViewModel.cart) { product ->
-                Row(
+        Column {
+            cartViewModel.cart.forEach { product ->
+                Card(
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                        .padding(bottom = 8.dp)
+                        .clip(RoundedCornerShape(8.dp)),
+                    colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
-                    Text(
-                        text = "${product.name} - ${product.price}",
-                        fontSize = 18.sp,
-                        color = Color.Black,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = "Remove Item",
-                        tint = Color.Red,
+                    Row(
                         modifier = Modifier
-                            .size(24.dp)
-                            .clickable { cartViewModel.removeFromCart(product) }
-                    )
+                            .padding(16.dp) // Add padding within the card
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "${product.name} - ${product.price} ₹",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Remove Item",
+                            tint = Color.Red,
+                            modifier = Modifier
+                                .size(24.dp)
+                                .clickable { cartViewModel.removeFromCart(product) }
+                        )
+                    }
                 }
+                Spacer(modifier = Modifier.size(8.dp))
             }
         }
 
@@ -122,27 +137,28 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
                     color = Color.Black
                 )
                 Spacer(modifier = Modifier.height(30.dp))
-                Button(onClick = {navController.navigate("legalSubServices")},
+                Button(
+                    onClick = { navController.navigate("legalSubServices") },
                     modifier = Modifier.padding(10.dp),
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
                 ) {
                     Text(text = "Book Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-
                 }
             }
         } else {
             Spacer(modifier = Modifier.size(16.dp))
             Text(
-                text = "Total: ${cartViewModel.cart.sumBy { it.price }}",
+                text = "Total: ${cartViewModel.cart.sumBy { it.price }} ₹",
                 fontSize = 20.sp,
                 color = Color.Black,
                 modifier = Modifier.padding(top = 16.dp)
             )
         }
+
         Spacer(modifier = Modifier.height(80.dp))
 
-        var amount = cartViewModel.cart.sumBy { it.price }
+        val amount = cartViewModel.cart.sumBy { it.price }
 
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -157,7 +173,5 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
                 .align(Alignment.CenterHorizontally),
             contentScale = ContentScale.Crop
         )
-
-
     }
 }

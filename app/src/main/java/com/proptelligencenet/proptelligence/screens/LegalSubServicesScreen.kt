@@ -119,7 +119,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                         .padding(end = 20.dp)
                                         .clickable {
                                             // When the add icon is clicked, add the product to the cart
-                                            cartViewModel.addToCart(Product("Agricultural Land", 500))
+                                            cartViewModel.addToCart(Product("Agricultural Land (Advocate Consultation)", 500))
                                         }
                                 )
 
@@ -157,7 +157,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                     contentDescription = "Add icon",
                                     tint = Color.Black,
                                     modifier = Modifier.padding(end = 20.dp).clickable {
-                                        cartViewModel.addToCart(Product("Converted Land", 500))
+                                        cartViewModel.addToCart(Product("Converted Land (Advocate Consultation)", 500))
                                     }
                                 )
                             }
@@ -193,7 +193,7 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                     contentDescription = "Add icon",
                                     tint = Color.Black,
                                     modifier = Modifier.padding(end = 20.dp).clickable {
-                                        cartViewModel.addToCart(Product("Commercial Properties", 500))
+                                        cartViewModel.addToCart(Product("Commercial Properties (Advocate Consultation)", 500))
                                     }                                )
                             }
                         }
@@ -226,7 +226,9 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Project Land", 500)) },
+                                    modifier = Modifier
+                                        .padding(end = 20.dp)
+                                        .clickable { cartViewModel.addToCart(Product("Project Land (Advocate Consultation)", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -261,7 +263,9 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Flat like Apartment", 500)) },
+                                    modifier = Modifier
+                                        .padding(end = 20.dp)
+                                        .clickable { cartViewModel.addToCart(Product("Flat like Apartment (Advocate Consultation)", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -295,7 +299,9 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Individual House", 500)) },
+                                    modifier = Modifier
+                                        .padding(end = 20.dp)
+                                        .clickable { cartViewModel.addToCart(Product("Individual House (Advocate Consultation)", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -329,7 +335,9 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                             ) {
                                 Icon(imageVector = Icons.Default.Add,
                                     contentDescription = "Add icon",
-                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Sites/Plots/Villas", 500)) },
+                                    modifier = Modifier
+                                        .padding(end = 20.dp)
+                                        .clickable { cartViewModel.addToCart(Product("Sites/Plots/Villas (Advocate Consultation)", 500)) },
                                     tint = Color.Black
                                 )
                             }
@@ -704,8 +712,93 @@ fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartView
                                 )
                             }
                         }
+                        Spacer(modifier = Modifier.height(20.dp))
 
+                        Text(
+                            text = "Affidavits",
+                            modifier = Modifier.padding(top = 0.dp),
+                            fontSize = 23.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
 
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Affidavits",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Affidavits", 2999)) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        Text(
+                            text = "Registration Support at SRO",
+                            modifier = Modifier.padding(top = 0.dp),
+                            fontSize = 23.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 32.dp, end = 32.dp, top = 10.dp, bottom = 10.dp)
+                                .height(55.dp)
+                                .clip(RoundedCornerShape(10.dp)) // Add this line to make the corners rounded
+                                .background(Color.White),
+
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+
+                            Column(
+                                modifier = Modifier
+                                    .padding(start = 16.dp)
+                                    .weight(1f)
+                            ) {
+                                Text(
+                                    text = "Registration Support at SRO",
+                                    fontSize = 18.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                            }
+                            Column(
+                                modifier = Modifier.fillMaxHeight(),
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.Add,
+                                    contentDescription = "Add icon",
+                                    modifier = Modifier.padding(end = 20.dp).clickable { cartViewModel.addToCart(Product("Registration Support at SRO", 4999)) },
+                                    tint = Color.Black
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
                     }
                 }
             }
