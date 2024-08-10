@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,21 +36,25 @@ fun SelectCityScreen(navController: NavController) {
         City("Bangalore", R.drawable.bangalore),
         City("Hyderabad", R.drawable.hyderabad),
         City("Ahmedabad", R.drawable.ahmedabad),
-        City("Chennai", R.drawable.chennai_changed),
+        City("Chennai", R.drawable.chennai),
         City("Kolkata", R.drawable.kolkata),
-        City("Pune", R.drawable.pune_changed),
+        City("Pune", R.drawable.pune),
+        City("Gurugram", R.drawable.gurugram),
+        City("Patna", R.drawable.patna)
         // Add more cities...
     )
 
     Column(
-        modifier = Modifier.fillMaxSize().background(Color(android.graphics.Color.parseColor("#CBD5DD"))),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(android.graphics.Color.parseColor("#CBD5DD"))),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "Select Your City",
+            text = "Discover your city",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(android.graphics.Color.parseColor("#32357A")),
+            color = Color.Black,
             modifier = Modifier.padding(16.dp)
         )
 
@@ -74,15 +79,17 @@ fun SelectCityScreen(navController: NavController) {
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 modifier = Modifier
-                                    .padding(0.dp) // Add padding inside the card
+                                    .padding(2.dp) // Add padding inside the card
                                     .fillMaxWidth()
                             ) {
+                                Spacer(modifier = Modifier.height(7.dp))
                                 Image(
                                     painter = painterResource(city.imageId),
                                     contentDescription = city.name,
                                     modifier = Modifier
                                         .size(100.dp) // Adjust image size as needed
-                                        .clip(CircleShape)
+                                        .clip(CircleShape),
+                                    contentScale = ContentScale.Crop
                                 )
                                 Text(
                                     text = city.name,
