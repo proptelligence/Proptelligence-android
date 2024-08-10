@@ -87,7 +87,7 @@ fun SelectCityScreen(navController: NavController) {
                                     painter = painterResource(city.imageId),
                                     contentDescription = city.name,
                                     modifier = Modifier
-                                        .size(100.dp) // Adjust image size as needed
+                                        .size(90.dp) // Adjust image size as needed
                                         .clip(CircleShape),
                                     contentScale = ContentScale.Crop
                                 )

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,7 +52,7 @@ fun PropertyServicesScreen(navController: NavController){
         City("Bangalore", R.drawable.bangalore),
         City("Hyderabad", R.drawable.hyderabad),
         //City("Ahmedabad", R.drawable.ahmedabad),
-        City("Chennai", R.drawable.chennai_changed),
+        City("Chennai", R.drawable.chennai),
         City("Kolkata", R.drawable.kolkata),
         //City("Pune", R.drawable.pune_changed),
         // Add more cities...
@@ -65,7 +67,9 @@ fun PropertyServicesScreen(navController: NavController){
         ) {
             innerPadding ->
             Column(
-                modifier = Modifier.fillMaxSize().background(Color(android.graphics.Color.parseColor("#CBD5DD")))
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(android.graphics.Color.parseColor("#CBD5DD")))
                     .padding(top = 55.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
@@ -100,15 +104,17 @@ fun PropertyServicesScreen(navController: NavController){
                                     Column(
                                         horizontalAlignment = Alignment.CenterHorizontally,
                                         modifier = Modifier
-                                            .padding(0.dp) // Add padding inside the card
+                                            .padding(2.dp) // Add padding inside the card
                                             .fillMaxWidth()
                                     ) {
+                                        Spacer(modifier = Modifier.height(7.dp))
                                         Image(
                                             painter = painterResource(city.imageId),
                                             contentDescription = city.name,
                                             modifier = Modifier
-                                                .size(100.dp) // Adjust image size as needed
-                                                .clip(CircleShape)
+                                                .size(90.dp) // Adjust image size as needed
+                                                .clip(CircleShape),
+                                            contentScale = ContentScale.Crop
                                         )
                                         Text(
                                             text = city.name,
