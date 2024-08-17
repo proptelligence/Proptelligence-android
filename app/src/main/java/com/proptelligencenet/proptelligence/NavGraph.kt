@@ -26,6 +26,7 @@ import com.proptelligencenet.proptelligence.screens.SplashScreen
 import com.proptelligencenet.proptelligence.SignIn.GoogleSignInLogic
 import com.proptelligencenet.proptelligence.screens.AhmedabadProp
 import com.proptelligencenet.proptelligence.screens.CartScreen
+import com.proptelligencenet.proptelligence.screens.EmailUs
 import com.proptelligencenet.proptelligence.screens.HyderabadProp
 import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
@@ -35,7 +36,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
     //val property = Property()
     val cartViewModel: CartViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = "splash"){
+    NavHost(navController = navController, startDestination = "company") {
         composable("splash"){
             SplashScreen(navController = navController)
         }
@@ -58,7 +59,7 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
             EditProfileScreen(navController = navController)
         }
         composable("legalServices"){
-            LegalServicesScreen(navController = navController)
+            LegalServicesScreen(navController = navController, cartViewModel = cartViewModel)
         }
         composable("services"){
             ServicesScreen(navController = navController)
@@ -105,6 +106,9 @@ fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignIn
 
         composable("cart"){
             CartScreen(navController = navController, cartViewModel = cartViewModel)
+        }
+        composable("emailUs"){
+            EmailUs(navController = navController)
         }
 
     }

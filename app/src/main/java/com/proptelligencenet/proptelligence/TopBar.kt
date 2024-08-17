@@ -3,6 +3,7 @@ package com.proptelligencenet.proptelligence
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -31,6 +33,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -42,8 +45,10 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
@@ -57,8 +62,11 @@ import kotlinx.coroutines.launch
 fun CustomTopAppBar(
     navController: NavController,
     coroutineScope: CoroutineScope,
-    drawerState: DrawerState
+    drawerState: DrawerState,
+    cartViewModel: CartViewModel = viewModel()
 ) {
+    val cartCount = cartViewModel.cart.size
+
     TopAppBar(
         title = {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -97,12 +105,14 @@ fun CustomTopAppBar(
         },
         actions = {
             IconButton(onClick = { navController.navigate("cart") }) {
-                Icon(
-                    imageVector = Icons.Default.ShoppingCart,
-                    contentDescription = "Profile Icon",
-                    modifier = Modifier.padding(0.dp),
-                    tint = Color.White
-                )
+                BadgedBox(badge = { Badge(count = cartCount) }) { // Add BadgedBox
+                    Icon(
+                        imageVector = Icons.Default.ShoppingCart,
+                        contentDescription = "Cart Icon",
+                        modifier = Modifier.padding(0.dp),
+                        tint = Color.White
+                    )
+                }
             }
             IconButton(onClick = { navController.navigate("profile") }) {
                 Icon(
@@ -262,6 +272,26 @@ fun CustomDrawer(
         },
         content = content
     )
+}
+
+@Composable
+fun Badge(count: Int) {
+    if (count >0) {
+        Box(
+            modifier = Modifier
+                .size(20.dp)
+                .background(Color.Red, shape = CircleShape)
+                .clip(CircleShape)
+        ) {
+            Text(
+                text = count.toString(),
+                color= Color.White,
+                fontSize = 10.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+    }
 }
 
 

@@ -82,9 +82,6 @@ dependencies {
 
     implementation(libs.coil.compose)
 
-
-
-
-
+    implementation(libs.material3)
 
 }

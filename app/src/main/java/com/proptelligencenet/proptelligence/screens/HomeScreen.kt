@@ -137,6 +137,7 @@ fun HomeScreen(navController: NavController) {
 
 
                         }
+
                         Spacer(modifier = Modifier.height(60.dp))
                         Text(
                             text = "Explore Services",
@@ -151,11 +152,11 @@ fun HomeScreen(navController: NavController) {
                                 modifier = Modifier
                                     .size(170.dp)
                                     .padding(8.dp)
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .clickable { navController.navigate("legalServices") },
-                                shape = RoundedCornerShape(8.dp),
+                                    .weight(1f),
+                                    //.clip(RoundedCornerShape(8.dp)),
                                 elevation = CardDefaults.cardElevation(4.dp),
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
+                                onClick = {navController.navigate("legalServices")}
                             ) {
                                 Column {
                                     Image(
@@ -181,11 +182,11 @@ fun HomeScreen(navController: NavController) {
                                 modifier = Modifier
                                     .size(170.dp)
                                     .padding(8.dp)
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .clickable { navController.navigate("propertyServices") },
-                                shape = RoundedCornerShape(8.dp),
+                                    .weight(1f),
+                                    //.clip(RoundedCornerShape(8.dp)),
                                 elevation = CardDefaults.cardElevation(4.dp),
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
+                                onClick = {navController.navigate("propertyServices")}
                             ) {
                                 Column {
                                     Image(
@@ -207,8 +208,8 @@ fun HomeScreen(navController: NavController) {
                         }
 
                         Spacer(modifier = Modifier.height(80.dp))
-                        ContentView()
-                        Spacer(modifier = Modifier.height(100.dp))
+                        //ContentView()
+                        //Spacer(modifier = Modifier.height(100.dp))
 
 
                         Box(

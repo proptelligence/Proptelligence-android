@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -49,11 +50,13 @@ import coil.request.ImageRequest
 import com.proptelligencenet.proptelligence.CustomDrawer
 import com.proptelligencenet.proptelligence.CustomTopAppBar
 import com.proptelligencenet.proptelligence.R
+import com.proptelligencenet.proptelligence.cart.Product
+import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LegalServicesScreen(navController: NavController) {
+fun LegalServicesScreen(navController: NavController, cartViewModel: CartViewModel) {
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
@@ -183,7 +186,7 @@ fun LegalServicesScreen(navController: NavController) {
                                     color = Color.Black
                                 )
 
-                                Button(onClick = {navController.navigate("legalSubServices")},
+                                Button(onClick = {cartViewModel.addToCart(Product("Advocate Consultation", 500))},
                                     modifier = Modifier.padding(10.dp),
                                     shape = RoundedCornerShape(10.dp),
                                     colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
@@ -202,11 +205,13 @@ fun LegalServicesScreen(navController: NavController) {
                         ) {
                             Card(
                                 modifier = Modifier
+                                    .size(200.dp)
                                     .weight(1f)
-                                    .padding(8.dp)
-                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
+                                    .padding(8.dp),
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
 
-                                onClick = {navController.navigate("legalSubServices")}
+                                onClick = {navController.navigate("emailUs")}
 
                             ) {
                                 Column(
@@ -223,7 +228,8 @@ fun LegalServicesScreen(navController: NavController) {
                                             .build(),
                                         contentDescription = "Title Search OR Legal Opinion Image",
                                         modifier = Modifier
-                                            .size(180.dp)
+                                            .fillMaxWidth()
+                                            .height(140.dp)
                                             .clip(RoundedCornerShape(8.dp))
                                             .align(Alignment.CenterHorizontally),
                                         contentScale = ContentScale.Crop
@@ -235,10 +241,12 @@ fun LegalServicesScreen(navController: NavController) {
 
                             Card(
                                 modifier = Modifier
+                                    .size(200.dp)
                                     .weight(1f)
-                                    .padding(8.dp)
-                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
-                                onClick = {navController.navigate("legalSubServices")}
+                                    .padding(8.dp),
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
+                                onClick = {navController.navigate("emailUs")}
 
                             ) {
                                 Column(
@@ -255,7 +263,8 @@ fun LegalServicesScreen(navController: NavController) {
                                             .build(),
                                         contentDescription = "",
                                         modifier = Modifier
-                                            .size(180.dp)
+                                            .fillMaxWidth()
+                                            .height(140.dp)
                                             .clip(RoundedCornerShape(8.dp))
                                             .align(Alignment.CenterHorizontally),
                                         contentScale = ContentScale.Crop
@@ -264,6 +273,7 @@ fun LegalServicesScreen(navController: NavController) {
                                 }
                             }
                         }
+                        Spacer(modifier = Modifier.height(20.dp))
 
                         Row(
                             horizontalArrangement = Arrangement.SpaceEvenly,
@@ -271,10 +281,12 @@ fun LegalServicesScreen(navController: NavController) {
                         ) {
                             Card(
                                 modifier = Modifier
+                                    .size(200.dp)
                                     .weight(1f)
-                                    .padding(8.dp)
-                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
-                                onClick = {navController.navigate("legalSubServices")}
+                                    .padding(8.dp),
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
+                                onClick = {cartViewModel.addToCart(Product("Affidavits", 2399))}
 
                             ) {
                                 Column(
@@ -291,7 +303,8 @@ fun LegalServicesScreen(navController: NavController) {
                                             .build(),
                                         contentDescription = "",
                                         modifier = Modifier
-                                            .size(180.dp)
+                                            .fillMaxWidth()
+                                            .height(140.dp)
                                             .clip(RoundedCornerShape(8.dp))
                                             .align(Alignment.CenterHorizontally),
                                         contentScale = ContentScale.Crop
@@ -302,10 +315,12 @@ fun LegalServicesScreen(navController: NavController) {
 
                             Card(
                                 modifier = Modifier
+                                    .size(200.dp)
                                     .weight(1f)
-                                    .padding(8.dp)
-                                    .border(0.5.dp, Color.Gray, shape = RoundedCornerShape(10.dp)),
-                                onClick = {navController.navigate("legalSubServices")}
+                                    .padding(8.dp),
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
+                                onClick = {cartViewModel.addToCart(Product("Registration Support at SRO", 4999))}
 
                             ) {
                                 Column(
@@ -322,7 +337,8 @@ fun LegalServicesScreen(navController: NavController) {
                                             .build(),
                                         contentDescription = "",
                                         modifier = Modifier
-                                            .size(180.dp)
+                                            .fillMaxWidth()
+                                            .height(140.dp)
                                             .clip(RoundedCornerShape(8.dp))
                                             .align(Alignment.CenterHorizontally),
                                         contentScale = ContentScale.Crop
@@ -598,9 +614,9 @@ fun LegalServicesScreen(navController: NavController) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun LegalServicesScreenPreview() {
-
-    LegalServicesScreen(rememberNavController())
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun LegalServicesScreenPreview() {
+//
+//    LegalServicesScreen(rememberNavController())
+//}
