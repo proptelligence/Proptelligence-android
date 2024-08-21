@@ -138,7 +138,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
                 )
                 Spacer(modifier = Modifier.height(30.dp))
                 Button(
-                    onClick = { navController.navigate("legalSubServices") },
+                    onClick = { navController.navigate("legalServices") },
                     modifier = Modifier.padding(10.dp),
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
