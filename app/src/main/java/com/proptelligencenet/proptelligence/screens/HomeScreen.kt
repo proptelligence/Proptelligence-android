@@ -20,9 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -207,7 +209,42 @@ fun HomeScreen(navController: NavController) {
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(80.dp))
+                        Spacer(modifier = Modifier.height(70.dp))
+
+                        Button(
+                            onClick = {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://wa.me/918062181169") // WhatsApp link with country code
+                                )
+                                context.startActivity(intent)
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF640FDD)), // Button background color
+                            elevation = ButtonDefaults.buttonElevation(
+                                defaultElevation = 20.dp,
+                                pressedElevation = 12.dp,
+                                hoveredElevation = 10.dp,
+                                focusedElevation = 10.dp
+                            ),
+                            modifier = Modifier.fillMaxWidth(0.5f)
+                        ) {
+                            Row {
+                                Image(
+                                    painter = painterResource(id = R.drawable.ic_whatsapp),
+                                    contentDescription = "whatsapp icon",
+                                    modifier = Modifier
+                                        .size(26.dp)
+                                )
+
+                                Text(
+                                    text = "Contact Us",
+                                    color = Color.White,
+                                    fontSize = 20.sp,
+                                    modifier = Modifier.padding(start = 8.dp),
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(70.dp))
                         //ContentView()
                         //Spacer(modifier = Modifier.height(100.dp))
 
