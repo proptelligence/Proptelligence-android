@@ -219,27 +219,27 @@ fun HomeScreen(navController: NavController) {
                                 )
                                 context.startActivity(intent)
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF640FDD)), // Button background color
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF32357A)), // Button background color
                             elevation = ButtonDefaults.buttonElevation(
                                 defaultElevation = 20.dp,
                                 pressedElevation = 12.dp,
                                 hoveredElevation = 10.dp,
                                 focusedElevation = 10.dp
                             ),
-                            modifier = Modifier.fillMaxWidth(0.5f)
+                            modifier = Modifier.fillMaxWidth(0.9f)
                         ) {
                             Row {
                                 Image(
                                     painter = painterResource(id = R.drawable.ic_whatsapp),
                                     contentDescription = "whatsapp icon",
                                     modifier = Modifier
-                                        .size(26.dp)
+                                        .size(25.dp)
                                 )
 
                                 Text(
-                                    text = "Contact Us",
+                                    text = "Connect with Proptelligence",
                                     color = Color.White,
-                                    fontSize = 20.sp,
+                                    fontSize = 18.sp,
                                     modifier = Modifier.padding(start = 8.dp),
                                 )
                             }
