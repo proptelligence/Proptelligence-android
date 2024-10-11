@@ -26,6 +26,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -292,6 +293,112 @@ fun HomeScreen(navController: NavController) {
                         }
 
                         Spacer(modifier = Modifier.height(100.dp))
+
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            // First row with two cards
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                Card(
+                                    modifier = Modifier
+                                        .padding(8.dp)
+                                        .weight(1f)
+                                        .size(120.dp), // Set a fixed size for both cards
+                                    elevation = CardDefaults.cardElevation(4.dp),
+                                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                                    onClick = {}
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center,
+                                        modifier = Modifier.padding(16.dp)
+                                    ) {
+                                        Text(
+                                            text = "Free Propert Services",
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = Color.Black,
+                                            textAlign = TextAlign.Center
+                                        )
+                                        Text(
+                                            text = "7+ Cities",
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = Color.Blue,
+                                            textAlign = TextAlign.Center
+                                        )
+                                        Text(
+                                            text = "31 States",
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = Color.Blue,
+                                            textAlign = TextAlign.Center
+                                        )
+                                    }
+                                }
+
+                                Card(
+                                    modifier = Modifier
+                                        .padding(8.dp)
+                                        .weight(1f)
+                                        .size(120.dp), // Set a fixed size for both cards
+                                    elevation = CardDefaults.cardElevation(4.dp),
+                                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                                    onClick = {}
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally,
+                                        verticalArrangement = Arrangement.Center,
+                                        modifier = Modifier.padding(16.dp)
+                                    ) {
+                                        Text(
+                                            text = "Products & Services",
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = Color.Black,
+                                            textAlign = TextAlign.Center
+                                        )
+                                        Text(
+                                            text = "15+ Cities",
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = Color.Blue,
+                                            textAlign = TextAlign.Center
+                                        )
+                                    }
+                                }
+                            }
+
+                            // Second row with a single card
+                            Card(
+                                modifier = Modifier
+                                    .padding(8.dp)
+                                    .size(120.dp), // Set the same fixed size for the third card
+                                elevation = CardDefaults.cardElevation(4.dp),
+                                onClick = {}
+                            ) {
+                                Column(
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.Center,
+                                    modifier = Modifier.padding(16.dp)
+                                ) {
+                                    Text(
+                                        text = "Online Legal Services",
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.Black,
+                                        textAlign = TextAlign.Center
+                                    )
+                                    Text(
+                                        text = "10+",
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.Blue,
+                                        textAlign = TextAlign.Center
+                                    )
+                                }
+                            }
+                        }
+
+
+
                         Text(
                             text = "Blogs",
                             fontSize = 30.sp,

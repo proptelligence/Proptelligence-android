@@ -6,8 +6,8 @@ data class SignInResult(
 )
 
 data class UserData(
-    val id: String,
-    val name: String?,
-    val email: String?,
-    val profilePicUrl: String?
+    val customer_id: String? = null,
+    val customer_name: String? = null,
+    val customer_email: String? = null,
+    val customer_phone: String? = null
 )

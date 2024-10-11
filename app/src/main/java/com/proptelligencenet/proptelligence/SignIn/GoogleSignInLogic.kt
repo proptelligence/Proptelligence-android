@@ -43,14 +43,14 @@ class GoogleSignInLogic(private val context: Context, private val navController:
 
                     Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
                     // Create a new user data class
-                    val userData = result.user?.uid?.let {
-                        UserData(
-                            id = it,
-                            name = result.user?.displayName,
-                            email = result.user?.email,
-                            profilePicUrl = result.user?.photoUrl.toString()
-                        )
-                    }
+//                    val userData = result.user?.uid?.let {
+//                        UserData(
+//                            id = it,
+//                            name = result.user?.displayName,
+//                            email = result.user?.email,
+//                            profilePicUrl = result.user?.photoUrl.toString()
+//                        )
+//                    }
                     // TODO: Store userData for later use
                 }
             }catch (e: CancellationException) {

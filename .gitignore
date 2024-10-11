@@ -15,3 +15,5 @@
 local.properties
 /app/google-services.json
 /app/release/
+/app/src/main/java/com/proptelligencenet/proptelligence/ApiService/PaymentAPI/PaymentStatusInterface.kt
+/app/src/main/java/com/proptelligencenet/proptelligence/ApiService/PaymentAPI/PaymentInterface.kt

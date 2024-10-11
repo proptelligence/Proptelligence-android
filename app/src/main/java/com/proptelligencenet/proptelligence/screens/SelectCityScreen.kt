@@ -41,7 +41,6 @@ fun SelectCityScreen(navController: NavController) {
         City("Pune", R.drawable.pune),
         City("Gurugram", R.drawable.gurugram),
         City("Patna", R.drawable.patna)
-        // Add more cities...
     )
 
     Column(

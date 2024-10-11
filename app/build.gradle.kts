@@ -12,8 +12,8 @@ android {
         applicationId = "com.proptelligencenet.proptelligence"
         minSdk = 28
         targetSdk = 34
-        versionCode = 5
-        versionName = "2.0.3"
+        versionCode = 6
+        versionName = "2.0.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -83,5 +83,7 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.material3)
+
+    implementation("com.cashfree.pg:api:2.1.17")
 
 }

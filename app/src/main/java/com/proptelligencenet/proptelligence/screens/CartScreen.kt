@@ -52,18 +52,15 @@ import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
 @Composable
 fun CartScreen(navController: NavController, cartViewModel: CartViewModel = viewModel()) {
-    val scrollState = rememberScrollState()  // Remember scroll state
-
-    LaunchedEffect(key1 = Unit) {
-        cartViewModel.fetchQRCode("Proptelligence", "proptelligencetech@sbi", "${cartViewModel.cart.sumBy { it.price }}")
-    }
+    val scrollState = rememberScrollState()
+    val context = LocalContext.current  // Access the current context
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(android.graphics.Color.parseColor("#F2F1F6")))
             .padding(16.dp)
-            .verticalScroll(scrollState),  // Make the whole content scrollable
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -123,28 +120,23 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
 
         Spacer(modifier = Modifier.size(16.dp))
 
-        if (cartViewModel.cart.isEmpty()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 200.dp),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.CenterHorizontally
+        if (cartViewModel.cart.isNotEmpty()) {
+            Spacer(modifier = Modifier.size(16.dp))
+            Text(
+                text = "Total: ${cartViewModel.cart.sumBy { it.price }} ₹",
+                fontSize = 20.sp,
+                color = Color.Black,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+
+            Spacer(modifier = Modifier.height(40.dp))
+
+            // Payment Button
+            Button(
+                onClick = { cartViewModel.createPayment(context) },  // Pass the context here
+                colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
             ) {
-                Text(
-                    text = "Cart is Empty",
-                    fontSize = 20.sp,
-                    color = Color.Black
-                )
-                Spacer(modifier = Modifier.height(30.dp))
-                Button(
-                    onClick = { navController.navigate("legalServices") },
-                    modifier = Modifier.padding(10.dp),
-                    shape = RoundedCornerShape(10.dp),
-                    colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
-                ) {
-                    Text(text = "Book Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                }
+                Text(text = "Pay Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
             }
         } else {
             Spacer(modifier = Modifier.size(16.dp))
@@ -158,20 +150,8 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
 
         Spacer(modifier = Modifier.height(80.dp))
 
-        val amount = cartViewModel.cart.sumBy { it.price }
 
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data("https://upiqr.in/api/qr?name=Proptelligence&vpa=proptelligencetech@sbi&format=png&amount=$amount")
-                .crossfade(true)
-                .build(),
-            contentDescription = "Property Image",
-            modifier = Modifier
-                .size(200.dp)
-                .fillMaxSize()
-                .clip(RoundedCornerShape(8.dp))
-                .align(Alignment.CenterHorizontally),
-            contentScale = ContentScale.Crop
-        )
+
+
     }
 }
