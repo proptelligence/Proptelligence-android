@@ -15,5 +15,4 @@ data class PaymentModel(
     @SerializedName("order_note"         ) var orderNote        : String?          = null,
     @SerializedName("order_status"       ) var orderStatus      : String?          = null,
     @SerializedName("payment_session_id" ) var paymentSessionId : String?          = null
-
 )

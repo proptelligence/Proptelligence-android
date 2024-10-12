@@ -30,6 +30,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,6 +48,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 
 import coil.request.ImageRequest
+import com.cashfree.pg.api.CFPaymentGatewayService
 
 import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
@@ -54,6 +56,12 @@ import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 fun CartScreen(navController: NavController, cartViewModel: CartViewModel = viewModel()) {
     val scrollState = rememberScrollState()
     val context = LocalContext.current  // Access the current context
+    val paymentStatus by cartViewModel.paymentStatus  // Observe the payment status
+
+    // Set CartViewModel as the payment callback
+    LaunchedEffect(key1 = Unit) {
+        CFPaymentGatewayService.getInstance().setCheckoutCallback(cartViewModel)
+    }
 
     Column(
         modifier = Modifier
@@ -138,6 +146,14 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
             ) {
                 Text(text = "Pay Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            // Show payment status if available
+            paymentStatus?.let {
+                Text(text = it, color = Color.Black, fontSize = 16.sp)
+            }
+
         } else {
             Spacer(modifier = Modifier.size(16.dp))
             Text(
