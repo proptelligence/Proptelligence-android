@@ -63,9 +63,9 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
                     order_currency = "INR",
                     customer_details = UserData(
                         customer_id = "sac1245",
-                        customer_name = "Sachin",
-                        customer_email = "sachin@gmail.com",
-                        customer_phone = "+917738878697"
+                        customer_name = "test",
+                        customer_email = "test@gmail.com",
+                        customer_phone = "+917972353637"
                     )
                 )
             )?.enqueue(object : Callback<PaymentModel> {
