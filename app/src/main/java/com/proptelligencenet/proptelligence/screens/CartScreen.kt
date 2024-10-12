@@ -2,6 +2,7 @@ package com.proptelligencenet.proptelligence.screens
 
 
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -151,8 +152,12 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
 
             // Show payment status if available
             paymentStatus?.let {
-                Text(text = it, color = Color.Black, fontSize = 16.sp)
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                cartViewModel.paymentStatus.value = null
+                cartViewModel.cart.clear()
             }
+
+
 
         } else {
             Spacer(modifier = Modifier.size(16.dp))
