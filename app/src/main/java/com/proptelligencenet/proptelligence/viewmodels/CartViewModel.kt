@@ -97,7 +97,7 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
     private fun doPayment(context: Context, response: PaymentModel) {
         try {
             val cfSession = CFSession.CFSessionBuilder()
-                .setEnvironment(CFSession.Environment.SANDBOX)
+                .setEnvironment(CFSession.Environment.PRODUCTION)
                 .setPaymentSessionID(response.paymentSessionId!!)
                 .setOrderId(response.orderId!!)
                 .build()

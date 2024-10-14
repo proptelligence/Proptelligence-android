@@ -9,7 +9,7 @@ object PaymentAPI {
     fun createOrder():PaymentInterface?{
         if (retrofit == null){
             retrofit = Retrofit.Builder()
-                .baseUrl("https://sandbox.cashfree.com")
+                .baseUrl("https://api.cashfree.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
