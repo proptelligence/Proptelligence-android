@@ -1,5 +1,6 @@
 package com.proptelligencenet.proptelligence.screens
 
+import CartViewModel
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -51,7 +52,7 @@ import com.proptelligencenet.proptelligence.CustomDrawer
 import com.proptelligencenet.proptelligence.CustomTopAppBar
 import com.proptelligencenet.proptelligence.R
 import com.proptelligencenet.proptelligence.cart.Product
-import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)

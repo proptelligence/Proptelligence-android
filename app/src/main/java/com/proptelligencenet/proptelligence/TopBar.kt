@@ -1,5 +1,6 @@
 package com.proptelligencenet.proptelligence
 
+import CartViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -53,7 +54,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

@@ -1,5 +1,6 @@
 package com.proptelligencenet.proptelligence
 
+import CartViewModel
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -28,7 +29,7 @@ import com.proptelligencenet.proptelligence.screens.AhmedabadProp
 import com.proptelligencenet.proptelligence.screens.CartScreen
 import com.proptelligencenet.proptelligence.screens.EmailUs
 import com.proptelligencenet.proptelligence.screens.HyderabadProp
-import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
+
 
 @Composable
 fun LoginLogic(navController: NavHostController, googleSignInLogic: GoogleSignInLogic) {

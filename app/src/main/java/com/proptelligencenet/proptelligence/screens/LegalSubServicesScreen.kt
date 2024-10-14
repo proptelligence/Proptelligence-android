@@ -1,5 +1,6 @@
 package com.proptelligencenet.proptelligence.screens
 
+import CartViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -37,7 +38,7 @@ import androidx.navigation.compose.rememberNavController
 import com.proptelligencenet.proptelligence.CustomDrawer
 import com.proptelligencenet.proptelligence.CustomTopAppBar
 import com.proptelligencenet.proptelligence.cart.Product
-import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
+
 
 @Composable
 fun LegalSubServicesScreen(navController: NavController, cartViewModel: CartViewModel){

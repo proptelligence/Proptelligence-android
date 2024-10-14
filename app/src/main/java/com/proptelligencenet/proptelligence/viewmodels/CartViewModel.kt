@@ -1,5 +1,3 @@
-package com.proptelligencenet.proptelligence.viewmodels
-
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.runtime.mutableStateListOf
@@ -15,7 +13,7 @@ import com.cashfree.pg.core.api.webcheckout.CFWebCheckoutTheme
 import com.cashfree.pg.ui.api.upi.intent.CFIntentTheme
 import com.cashfree.pg.ui.api.upi.intent.CFUPIIntentCheckout
 import com.cashfree.pg.ui.api.upi.intent.CFUPIIntentCheckoutPayment
-import com.proptelligencenet.proptelligence.ApiService.NetworkModule
+import com.google.firebase.auth.FirebaseAuth
 import com.proptelligencenet.proptelligence.ApiService.PaymentAPI.PaymentAPI
 import com.proptelligencenet.proptelligence.ApiService.PaymentAPI.PaymentStatusAPI
 import com.proptelligencenet.proptelligence.SignIn.UserData
@@ -30,14 +28,21 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.Arrays
+import kotlin.math.log
 
 class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
 
-
     val cart = mutableStateListOf<Product>()
-    val paymentSessionUrl = mutableStateOf<String?>(null)
-    val paymentStatus = mutableStateOf<String?>(null) // Holds the payment status for the UI
+    val paymentStatus = mutableStateOf<String?>(null)
+    var userData = mutableStateOf(UserData()) // Holds the user data from the form
+    var isPaymentFormVisible = mutableStateOf(false) // Control the form visibility
 
+
+
+    // Method to toggle payment form visibility
+    fun togglePaymentForm() {
+        isPaymentFormVisible.value = !isPaymentFormVisible.value
+    }
 
     fun addToCart(product: Product) {
         cart.add(product)
@@ -53,39 +58,36 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
 
     fun createPayment(context: Context) {
         try {
-            // Register the CartViewModel as the payment callback
             CFPaymentGatewayService.getInstance().setCheckoutCallback(this)
 
-            // Call the API to create a payment order
+            // Calculate total amount
+            val totalAmount = cart.sumOf { it.price }
+
+            // Call the API to create the order
             PaymentAPI.createOrder()?.getOrderID(
                 Data(
-                    order_amount = cart.sumBy { it.price }.toDouble(),  // Calculate the total amount
+                    order_amount = totalAmount.toDouble(),
                     order_currency = "INR",
-                    customer_details = UserData(
-                        customer_id = "sac1245",
-                        customer_name = "test",
-                        customer_email = "test@gmail.com",
-                        customer_phone = "+917972353637"
-                    )
+                    customer_details = userData.value
                 )
             )?.enqueue(object : Callback<PaymentModel> {
                 override fun onResponse(call: Call<PaymentModel>, response: Response<PaymentModel>) {
-                    // If the API responds successfully, start the payment process
                     if (response.isSuccessful && response.body() != null) {
                         doPayment(context, response.body()!!)
                     } else {
-                        // Handle error: Response not successful or body is null
-                        paymentStatus.value = "Failed to create order: ${response.message()}"
+                        // Log and handle API errors
+                        val errorBody = response.errorBody()?.string()
+                        paymentStatus.value = "Order creation failed: ${response.message()} - $errorBody"
+                        println("Order creation failed: ${response.message()} - $errorBody")
+
                     }
                 }
 
                 override fun onFailure(call: Call<PaymentModel>, t: Throwable) {
-                    // Handle failure in the order creation
                     paymentStatus.value = "Error creating order: ${t.message}"
                 }
             })
         } catch (e: CFException) {
-            // Handle CFException
             paymentStatus.value = "Error: ${e.message}"
             e.printStackTrace()
         }
@@ -96,8 +98,8 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
         try {
             val cfSession = CFSession.CFSessionBuilder()
                 .setEnvironment(CFSession.Environment.SANDBOX)
-                .setPaymentSessionID(response.paymentSessionId!!)  // Make sure this is not null
-                .setOrderId(response.orderId!!)  // Ensure order ID is not null
+                .setPaymentSessionID(response.paymentSessionId!!)
+                .setOrderId(response.orderId!!)
                 .build()
 
             val cfTheme = CFWebCheckoutTheme.CFWebCheckoutThemeBuilder()
@@ -110,18 +112,16 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
                 .setCFWebCheckoutUITheme(cfTheme)
                 .build()
 
-
             val cfUPITheme = CFIntentTheme.CFIntentThemeBuilder()
                 .setPrimaryTextColor("#000000")
                 .setBackgroundColor("#FFFFFF")
                 .build()
-            val cfupiIntentCheckout =
-                CFUPIIntentCheckout.CFUPIIntentBuilder() // Use either the enum or the application package names to order the UPI apps as per your needed
-                    // Remove both if you want to use the default order which cashfree provides based on the popularity
-                    // NOTE - only one is needed setOrder or setOrderUsingPackageName
-                    .setOrderUsingPackageName(Arrays.asList("com.dreamplug.androidapp", "in.org.npci.upiapp"))
-                    .setOrder(Arrays.asList(CFUPIIntentCheckout.CFUPIApps.BHIM, CFUPIIntentCheckout.CFUPIApps.PHONEPE))
-                    .build()
+
+            val cfupiIntentCheckout = CFUPIIntentCheckout.CFUPIIntentBuilder()
+                .setOrderUsingPackageName(Arrays.asList("com.dreamplug.androidapp", "in.org.npci.upiapp"))
+                .setOrder(Arrays.asList(CFUPIIntentCheckout.CFUPIApps.BHIM, CFUPIIntentCheckout.CFUPIApps.PHONEPE))
+                .build()
+
             val cfupiIntentCheckoutPayment = CFUPIIntentCheckoutPayment.CFUPIIntentPaymentBuilder()
                 .setSession(cfSession)
                 .setCfUPIIntentCheckout(cfupiIntentCheckout)
@@ -131,17 +131,14 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
             // Trigger the payment process
             CFPaymentGatewayService.getInstance().doPayment(context, cfWebCheckoutPayment)
         } catch (exception: CFException) {
-            // Handle payment exception
             paymentStatus.value = "Error during payment: ${exception.message}"
             exception.printStackTrace()
         }
     }
 
-
-
     // Called when the payment is successful and needs verification
     override fun onPaymentVerify(orderKey: String?) {
-        getPaymentStatus(orderKey!!)
+        orderKey?.let { getPaymentStatus(it) }
     }
 
     // Called when the payment fails
@@ -150,13 +147,10 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
     }
 
     // Fetches the payment status from the server
-    fun getPaymentStatus(orderKey: String) {
+    private fun getPaymentStatus(orderKey: String) {
         PaymentStatusAPI.getPaymentStatus()?.create(orderKey)
             ?.enqueue(object : Callback<PaymentStatusModel> {
-                override fun onResponse(
-                    call: Call<PaymentStatusModel>,
-                    response: Response<PaymentStatusModel>
-                ) {
+                override fun onResponse(call: Call<PaymentStatusModel>, response: Response<PaymentStatusModel>) {
                     if (response.body()?.order_status == "PAID") {
                         paymentStatus.value = "Payment complete."
                     } else {
@@ -170,4 +164,3 @@ class CartViewModel : ViewModel(), CFCheckoutResponseCallback {
             })
     }
 }
-

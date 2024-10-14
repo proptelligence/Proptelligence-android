@@ -2,6 +2,8 @@ package com.proptelligencenet.proptelligence.screens
 
 
 
+import CartViewModel
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -29,9 +31,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,19 +55,28 @@ import coil.compose.AsyncImage
 
 import coil.request.ImageRequest
 import com.cashfree.pg.api.CFPaymentGatewayService
+import com.proptelligencenet.proptelligence.SignIn.UserData
+import com.proptelligencenet.proptelligence.cart.Product
 
-import com.proptelligencenet.proptelligence.viewmodels.CartViewModel
 
 @Composable
 fun CartScreen(navController: NavController, cartViewModel: CartViewModel = viewModel()) {
     val scrollState = rememberScrollState()
-    val context = LocalContext.current  // Access the current context
-    val paymentStatus by cartViewModel.paymentStatus  // Observe the payment status
+    val context = LocalContext.current
+    val paymentStatus by cartViewModel.paymentStatus
+    val isPaymentFormVisible by cartViewModel.isPaymentFormVisible // Observing payment form visibility
+    val userData by cartViewModel.userData
 
     // Set CartViewModel as the payment callback
-    LaunchedEffect(key1 = Unit) {
-        CFPaymentGatewayService.getInstance().setCheckoutCallback(cartViewModel)
+    LaunchedEffect(Unit) {
+        try {
+            CFPaymentGatewayService.getInstance().setCheckoutCallback(cartViewModel)
+        } catch (e: Exception) {
+            // Log or show an error if the callback setting fails
+            Log.e("CartScreen", "Error setting checkout callback: ${e.message}")
+        }
     }
+
 
     Column(
         modifier = Modifier
@@ -72,6 +86,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
             .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Back button and cart items
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Start,
@@ -91,39 +106,10 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
         )
         Spacer(modifier = Modifier.size(16.dp))
 
+        // List of cart items
         Column {
             cartViewModel.cart.forEach { product ->
-                Card(
-                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp)
-                        .clip(RoundedCornerShape(8.dp)),
-                    colors = CardDefaults.cardColors(containerColor = Color.White)
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .padding(16.dp) // Add padding within the card
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "${product.name} - ${product.price} ₹",
-                            fontSize = 18.sp,
-                            color = Color.Black,
-                            modifier = Modifier.weight(1f)
-                        )
-                        Icon(
-                            imageVector = Icons.Default.Delete,
-                            contentDescription = "Remove Item",
-                            tint = Color.Red,
-                            modifier = Modifier
-                                .size(24.dp)
-                                .clickable { cartViewModel.removeFromCart(product) }
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.size(8.dp))
+                CartItem(product, onRemove = { cartViewModel.removeFromCart(it) })
             }
         }
 
@@ -132,7 +118,7 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
         if (cartViewModel.cart.isNotEmpty()) {
             Spacer(modifier = Modifier.size(16.dp))
             Text(
-                text = "Total: ${cartViewModel.cart.sumBy { it.price }} ₹",
+                text = "Total: ${cartViewModel.cart.sumOf { it.price }} ₹" ,
                 fontSize = 20.sp,
                 color = Color.Black,
                 modifier = Modifier.padding(top = 16.dp)
@@ -140,12 +126,28 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            // Payment Button
-            Button(
-                onClick = { cartViewModel.createPayment(context) },  // Pass the context here
-                colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
-            ) {
-                Text(text = "Pay Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            // Toggle between the Pay Now button and the form
+            if (!isPaymentFormVisible) {
+                Button(
+                    onClick = { cartViewModel.togglePaymentForm() },
+                    colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#32357A")))
+                ) {
+                    Text(text = "Pay Now", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                }
+            } else {
+                // Form for user details
+                UserDetailForm(
+                    userData = userData,
+                    onFormSubmit = { updatedUserData ->
+                        // Update the ViewModel's userData with the correct data
+                        cartViewModel.userData.value = updatedUserData
+                        // Now proceed to create the payment
+                        cartViewModel.createPayment(context)
+                    }
+                )
+
+
+
             }
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -154,25 +156,97 @@ fun CartScreen(navController: NavController, cartViewModel: CartViewModel = view
             paymentStatus?.let {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
                 cartViewModel.paymentStatus.value = null
-                cartViewModel.cart.clear()
+                cartViewModel.clearCart()
             }
-
-
-
         } else {
-            Spacer(modifier = Modifier.size(16.dp))
             Text(
-                text = "Total: ${cartViewModel.cart.sumBy { it.price }} ₹",
+                text = "Your cart is empty.",
                 fontSize = 20.sp,
                 color = Color.Black,
                 modifier = Modifier.padding(top = 16.dp)
             )
         }
-
-        Spacer(modifier = Modifier.height(80.dp))
-
-
-
-
     }
 }
+
+@Composable
+fun CartItem(product: Product, onRemove: (Product) -> Unit) {
+    Card(
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 8.dp)
+            .clip(RoundedCornerShape(8.dp)),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "${product.name} - ${product.price} ₹",
+                fontSize = 18.sp,
+                color = Color.Black,
+                modifier = Modifier.weight(1f)
+            )
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Remove Item",
+                tint = Color.Red,
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickable { onRemove(product) }
+            )
+        }
+    }
+}
+
+@Composable
+fun UserDetailForm(userData: UserData, onFormSubmit: (UserData) -> Unit) {
+    // Keep track of form inputs
+    val name = remember { mutableStateOf(userData.customer_name ?: "") }
+    val email = remember { mutableStateOf(userData.customer_email ?: "") }
+    val phone = remember { mutableStateOf(userData.customer_phone ?: "") }
+
+    Column {
+        // Name Field
+        TextField(
+            value = name.value,
+            onValueChange = { name.value = it },
+            label = { Text("Name") } // This should be a person's name, not an email
+        )
+
+        // Email Field
+        TextField(
+            value = email.value,
+            onValueChange = { email.value = it },
+            label = { Text("Email") }
+        )
+
+        // Phone Field
+        TextField(
+            value = phone.value,
+            onValueChange = { phone.value = it },
+            label = { Text("Phone") }
+        )
+
+        Button(onClick = {
+            // Ensure that form data gets updated in the ViewModel properly
+            onFormSubmit(
+                UserData(
+                    customer_name = name.value,  // Ensure this is the person's name
+                    customer_email = email.value, // Email here
+                    customer_phone = phone.value  // Phone number here
+                )
+            )
+        }) {
+            Text("Proceed to Payment")
+        }
+    }
+}
+
+
+
+
